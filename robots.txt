@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mrt-hust.github.io/notepix-site/sitemap.xml

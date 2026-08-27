@@ -7,13 +7,101 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Notepix</title>
-<meta name="description" content="Click your app, tell AI what to fix. Notepix pins notes onto your running web app and turns them into source-aware briefs for Claude Code, Cursor, Copilot, Windsurf — any AI coding agent." />
+<title>Notepix — Click your app, tell AI what to fix | Chrome extension for AI coding agents</title>
+<meta name="description" content="Click any element, write the change, and your AI coding agent gets the exact component, source file and style behind it. Works with Claude Code, Cursor, Copilot." />
+<link rel="canonical" href="https://mrt-hust.github.io/notepix-site/" />
+<meta name="theme-color" content="#0f0f15" />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+<link rel="apple-touch-icon" href="assets/icon-128.png" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Notepix" />
+<meta property="og:url" content="https://mrt-hust.github.io/notepix-site/" />
 <meta property="og:title" content="Notepix — click your app, tell AI what to fix" />
 <meta property="og:description" content="Pin notes, frames and sketches onto your running app — each resolved to the component and source file behind it — then hand the batch to your AI coding agent as one precise brief." />
-<meta property="og:image" content="assets/hero-plain.png" />
+<meta property="og:image" content="https://mrt-hust.github.io/notepix-site/assets/og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="A dashboard app with Notepix pins, a frame and a freehand circle on it; the panel lists each mark with the React component and source file behind it" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Notepix — click your app, tell AI what to fix" />
+<meta name="twitter:description" content="Pin notes on your running app; your AI coding agent gets the exact component, file and style behind every mark — or reads them itself over MCP." />
+<meta name="twitter:image" content="https://mrt-hust.github.io/notepix-site/assets/og.png" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=JetBrains+Mono:wght@400;600&display=swap" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Notepix",
+  "operatingSystem": "Chrome 116+ (Windows, macOS, Linux)",
+  "applicationCategory": "DeveloperApplication",
+  "url": "https://mrt-hust.github.io/notepix-site/",
+  "image": "https://mrt-hust.github.io/notepix-site/assets/og.png",
+  "description": "Chrome extension that pins notes, frames and sketches onto your running web app — each resolved to the React component, source file and computed style behind it — and hands the batch to an AI coding agent as one precise brief, or serves it live over MCP.",
+  "offers": {
+    "@type": "Offer",
+    "price": "4.99",
+    "priceCurrency": "USD",
+    "description": "One-time unlock after a full-featured 7-day free trial. No subscription."
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Notepix",
+  "url": "https://mrt-hust.github.io/notepix-site/"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need React for this to work?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No — Notepix marks up any page. On a React dev build (Vite, Next.js, CRA; React 18 and 19) each mark additionally records the component name and source file:line behind the element. On production builds and non-React pages it falls back to a precise CSS selector. Vue and Svelte source resolution is on the roadmap." }
+    },
+    {
+      "@type": "Question",
+      "name": "Which AI agents does it work with?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Anything you can paste into: Claude Code, Cursor, GitHub Copilot, Windsurf, Codex, Aider, a plain chat window. The brief is plain text on your clipboard — no account or setup required. You can also skip the paste entirely: with Claude Code connected through Claude in Chrome, or by adding the optional Notepix MCP server (npx -y notepix-mcp setup) so your agent pulls the marks and screenshots itself and ticks them off as it fixes them." }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it work on Lovable, Replit, v0 or Bolt previews?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes — click the Notepix toolbar icon on any http(s) page, cloud previews included, and mark it up. On localhost dev servers Notepix auto-loads after every reload; one-click auto-load for preview domains is the next planned update." }
+    },
+    {
+      "@type": "Question",
+      "name": "Where do my notes live?",
+      "acceptedAnswer": { "@type": "Answer", "text": "In Chrome's local extension storage, keyed per page and per SPA route. On localhost dev servers Notepix auto-loads, so notes are still there after every reload. You can export any page's marks as a JSON file and import them anywhere." }
+    },
+    {
+      "@type": "Question",
+      "name": "What does Notepix send over the network?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Nothing leaves your computer — until you enter a license key. From then on there is exactly one kind of internet request: verifying your key against Gumroad's license API at activation and at most weekly. It carries the key and the product id, never page content, notes or screenshots. If you switch on the optional MCP connection, that one goes to 127.0.0.1 — your own machine — and nowhere else." }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens when the trial ends?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Creating new marks asks for the one-time $4.99 unlock. Everything you already made stays viewable, copyable, exportable and deletable forever — your notes are your data." }
+    },
+    {
+      "@type": "Question",
+      "name": "The keyboard shortcut doesn't do anything?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Alt+Shift can collide with keyboard-layout switching, especially on Windows. Open chrome://extensions/shortcuts and rebind \"Toggle the Notepix panel\" to anything you like — the toolbar icon and right-click menu always work regardless." }
+    },
+    {
+      "@type": "Question",
+      "name": "Chrome only?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Chrome 116+ and Chromium-based Edge (tested). An Edge Add-ons listing and other browsers are on the roadmap." }
+    }
+  ]
+}
+</script>
 <style>
   :root {
     --bg: #0f0f15;
@@ -287,7 +375,7 @@
       <a class="btn primary big" data-store href="#install">Add to Chrome — free 7-day trial</a>
       <a class="btn big" href="#how">See how it works</a>
     </div>
-    <p class="fineprint">Chrome 111+ · works on Edge · $4.99 once after the trial, no subscription</p>
+    <p class="fineprint">Chrome 116+ · works on Edge · $4.99 once after the trial, no subscription</p>
 
     <div class="hero-art">
       <figure class="browser" style="margin:0">
@@ -295,7 +383,7 @@
           <span class="dot"></span><span class="dot"></span><span class="dot"></span>
           <span class="url">localhost:3000/demo.html</span>
         </div>
-        <img src="assets/hero-plain.png" width="1280" height="800"
+        <img src="assets/hero-plain.png" width="1280" height="800" fetchpriority="high"
              alt="A dashboard app with the Notepix panel open: numbered pins, a white frame and a red freehand circle on the page, each panel card naming the React component and source file behind its element, with a Copy for AI button" />
       </figure>
     </div>
@@ -613,6 +701,13 @@ Apply the requested change for each item, then I'll re-check in the browser.
            the marks and screenshots itself and ticks them off as it fixes them.</p>
       </details>
       <details>
+        <summary>Does it work on Lovable, Replit, v0 or Bolt previews?</summary>
+        <p>Yes — click the Notepix toolbar icon on any http(s) page, cloud previews
+           included, and mark it up. On localhost dev servers Notepix auto-loads after
+           every reload; one-click auto-load for preview domains is the next planned
+           update.</p>
+      </details>
+      <details>
         <summary>Where do my notes live?</summary>
         <p>In Chrome’s local extension storage, keyed per page and per SPA route. On
            localhost dev servers Notepix auto-loads, so notes are still there after every
@@ -643,7 +738,7 @@ Apply the requested change for each item, then I'll re-check in the browser.
       </details>
       <details>
         <summary>Chrome only?</summary>
-        <p>Chrome 111+ and Chromium-based Edge (tested). An Edge Add-ons listing and other
+        <p>Chrome 116+ and Chromium-based Edge (tested). An Edge Add-ons listing and other
            browsers are on the roadmap.</p>
       </details>
     </div>
@@ -657,8 +752,13 @@ Apply the requested change for each item, then I'll re-check in the browser.
     <div class="foot-links">
       <a href="privacy.html">Privacy policy</a>
       <a href="#faq">FAQ</a>
+      <a href="https://www.npmjs.com/package/notepix-mcp" rel="noreferrer">notepix-mcp on npm</a>
+      <a href="mailto:jane.nth.uk@gmail.com">Contact</a>
       <a data-store href="#install">Add to Chrome</a>
     </div>
+  </div>
+  <div class="wrap" style="padding-top:14px; color:var(--dim2); font-size:12.5px">
+    © 2026 Notepix · 100% local — your pages, notes and screenshots never leave your machine.
   </div>
 </footer>
 
