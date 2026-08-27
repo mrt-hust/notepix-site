@@ -1,0 +1,683 @@
+<!doctype html>
+<!-- Notepix landing page — static, deploy the whole site/ folder anywhere
+     (GitHub Pages, Cloudflare Pages, Netlify). Screenshots in assets/ are
+     the real store screenshots (regenerate: cd e2e && npm run shots, then
+     re-copy). After CWS approval, set STORE_URL in the script at the bottom. -->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Notepix</title>
+<meta name="description" content="Click your app, tell AI what to fix. Notepix pins notes onto your running web app and turns them into source-aware briefs for Claude Code, Cursor, Copilot, Windsurf — any AI coding agent." />
+<meta property="og:title" content="Notepix — click your app, tell AI what to fix" />
+<meta property="og:description" content="Pin notes, frames and sketches onto your running app — each resolved to the component and source file behind it — then hand the batch to your AI coding agent as one precise brief." />
+<meta property="og:image" content="assets/hero-plain.png" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=JetBrains+Mono:wght@400;600&display=swap" />
+<style>
+  :root {
+    --bg: #0f0f15;
+    --bg2: #15151c;
+    --bg3: #1a1a23;
+    --card: #17171f;
+    --line: #2c2c38;
+    --line2: #3a3a4e;
+    --ink: #e9e9f1;
+    --dim: #9a9ab0;
+    --dim2: #7b7b94;
+    --accent: #7c5cff;
+    --accent-soft: rgba(124, 92, 255, 0.12);
+    --accent-text: #cfbcff;
+    --link: #a68bff;
+    --red: #ff2d55;
+    --cyan: #34c5d6;
+    --font-d: "Bricolage Grotesque", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-b: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-m: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html { color-scheme: dark; }
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 15.5px/1.65 var(--font-b);
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+  }
+  a { color: var(--link); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+  section { padding: 92px 0; }
+  kbd {
+    background: #26262f; border: 1px solid #3a3a48; border-bottom-width: 2px;
+    border-radius: 5px; padding: 1px 6px; font: 12px var(--font-m); color: var(--ink);
+  }
+
+  /* ---- logo mark (same construction as the extension's welcome page) ---- */
+  .mark { width: 30px; height: 30px; border-radius: 8px; background: #101016;
+          border: 1px solid var(--line); position: relative; flex: none; }
+  .mark::before { content: ""; position: absolute; inset: 8px; border: 2px solid #fff; border-radius: 2px; }
+  .mark::after { content: ""; position: absolute; top: 3px; left: 3px; width: 9px; height: 9px;
+                 border-radius: 50%; background: var(--accent); }
+
+  /* ---- shared bits ---- */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 11px 20px; border-radius: 10px; border: 1px solid var(--line2);
+    background: var(--bg3); color: var(--ink); font: 600 13.5px var(--font-b);
+    cursor: pointer; white-space: nowrap; transition: filter .12s, border-color .12s;
+  }
+  .btn:hover { filter: brightness(1.12); text-decoration: none; }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff;
+                 box-shadow: 0 4px 24px rgba(124, 92, 255, 0.28); }
+  .btn.big { padding: 14px 26px; font-size: 15px; border-radius: 12px; }
+  .pin {
+    width: 22px; height: 22px; border-radius: 999px; background: var(--accent);
+    border: 1.5px solid #fff; color: #fff; font: 700 11px/1 var(--font-b);
+    display: inline-flex; align-items: center; justify-content: center;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35); flex: none;
+  }
+  .pill {
+    font: 600 10px var(--font-m); letter-spacing: 0.06em; padding: 2px 9px;
+    border-radius: 999px; background: #2a2a36; color: var(--accent-text); flex: none;
+  }
+  .mark-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+  .mark-meta .msrc { font: 11.5px var(--font-m); color: var(--dim2); word-break: break-all; }
+  .eyebrow { font: 600 11px var(--font-m); letter-spacing: 0.14em; color: var(--accent-text);
+             text-transform: uppercase; margin: 0 0 12px; }
+  h1, h2, h3 { font-family: var(--font-d); letter-spacing: -0.02em; text-wrap: balance; margin: 0; }
+  h2 { font-size: clamp(26px, 3.6vw, 36px); font-weight: 700; line-height: 1.15; }
+  h3 { font-size: 20px; font-weight: 700; line-height: 1.25; margin-bottom: 10px; }
+  .lede { color: var(--dim); max-width: 640px; }
+  p { margin: 0 0 14px; }
+
+  /* ---- nav ---- */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(15, 15, 21, 0.82); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-in { display: flex; align-items: center; gap: 22px; padding: 12px 24px;
+            max-width: 1060px; margin: 0 auto; }
+  .brand { display: flex; align-items: center; gap: 10px; color: var(--ink);
+           font: 700 15px var(--font-d); letter-spacing: 0.01em; }
+  .brand:hover { text-decoration: none; }
+  .nav-links { display: flex; gap: 18px; margin-left: auto; }
+  .nav-links a { color: var(--dim); font: 500 13px var(--font-b); }
+  .nav-links a:hover { color: var(--ink); text-decoration: none; }
+  @media (max-width: 720px) { .nav-links { display: none; } .nav-in .btn { margin-left: auto; } }
+
+  /* ---- hero ---- */
+  .hero { padding: 84px 0 64px; }
+  .hero h1 {
+    font-size: clamp(36px, 5.6vw, 58px); font-weight: 800; line-height: 1.12;
+    max-width: 780px; padding-top: 26px;
+  }
+  /* the headline "element-picked", exactly like Notepix's hover highlight */
+  .hl { position: relative; display: inline-block; padding: 0 10px;
+        border: 2px solid var(--accent); background: var(--accent-soft); border-radius: 5px; }
+  .hl .tag {
+    position: absolute; left: -2px; top: -24px; padding: 1px 7px;
+    background: var(--accent); color: #fff; border-radius: 3px;
+    font: 600 10.5px/17px var(--font-m); letter-spacing: 0; white-space: nowrap;
+  }
+  .ink { position: relative; white-space: nowrap; }
+  .ink svg { position: absolute; left: 2%; right: 0; bottom: -0.18em; width: 96%; height: 0.22em;
+             overflow: visible; pointer-events: none; }
+  .ink path { fill: none; stroke: var(--red); stroke-width: 5; stroke-linecap: round;
+              stroke-dasharray: 330; stroke-dashoffset: 330;
+              animation: inkdraw 0.7s ease 0.5s forwards; }
+  @keyframes inkdraw { to { stroke-dashoffset: 0; } }
+  @media (prefers-reduced-motion: reduce) {
+    .ink path { animation: none; stroke-dashoffset: 0; }
+  }
+  @media (max-width: 620px) {
+    .hl .tag { display: none; }
+    .hero h1 { padding-top: 0; }
+    .ink { white-space: normal; }
+    .ink svg { display: none; }
+  }
+  .hero .lede { font-size: 17px; margin: 22px 0 28px; }
+  .cta-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .fineprint { margin-top: 14px; font: 12px var(--font-m); color: var(--dim2); }
+  .agents { display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
+            margin-top: 34px; color: var(--dim2); font: 500 12.5px var(--font-b); }
+  .agents span { font: 500 11.5px var(--font-m); color: var(--dim);
+                 border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; }
+
+  .hero-art { position: relative; margin-top: 52px; }
+  .hero-art::before {
+    content: ""; position: absolute; inset: -60px -8% auto; height: 380px;
+    background: radial-gradient(52% 64% at 50% 18%, rgba(124, 92, 255, 0.17), transparent 72%);
+    pointer-events: none;
+  }
+  .browser { position: relative; background: #1d1d26; border: 1px solid var(--line);
+             border-radius: 14px; overflow: hidden;
+             box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5), 0 2px 10px rgba(0, 0, 0, 0.4); }
+  .browser .bar { display: flex; align-items: center; gap: 8px; padding: 10px 14px;
+                  background: #22222c; border-bottom: 1px solid var(--line); }
+  .browser .dot { width: 10px; height: 10px; border-radius: 50%; background: #3a3a48; }
+  .browser .url { margin-left: 8px; font: 11px var(--font-m); color: var(--dim2);
+                  background: #17171f; border: 1px solid var(--line); border-radius: 6px;
+                  padding: 3px 10px; }
+  .browser img { display: block; width: 100%; height: auto; }
+
+  /* ---- how it works ---- */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 36px; }
+  .step { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 24px 22px; }
+  .step .n { width: 26px; height: 26px; border-radius: 50%; background: var(--accent); color: #fff;
+             font: 700 13px/26px var(--font-b); text-align: center; margin-bottom: 14px; }
+  .step h3 { font-size: 16.5px; }
+  .step p { color: var(--dim); font-size: 14px; margin: 0; }
+  .quote { border-left: 3px solid var(--accent); background: var(--bg2); border-radius: 6px;
+           padding: 8px 12px; margin-top: 12px; font-style: italic; font-size: 13px; color: var(--ink); }
+  @media (max-width: 860px) { .steps { grid-template-columns: 1fr; } }
+
+  /* ---- feature marks ---- */
+  .feat { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+          gap: 56px; align-items: center; padding: 46px 0; }
+  .feat + .feat { border-top: 1px dashed var(--line); }
+  .feat .txt p { color: var(--dim); }
+  .feat.flip .txt { order: 2; }
+  .feat .side { color: var(--dim2); font-size: 13px; }
+  @media (max-width: 900px) {
+    .feat, .feat.flip { grid-template-columns: 1fr; gap: 26px; padding: 36px 0; }
+    .feat.flip .txt { order: 0; }
+  }
+
+  /* ---- the brief (real output) ---- */
+  .term { background: #101016; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+  .term .thead { display: flex; align-items: center; gap: 8px; padding: 9px 14px;
+                 background: #16161e; border-bottom: 1px solid var(--line);
+                 font: 600 10.5px var(--font-m); letter-spacing: 0.08em; color: var(--dim2);
+                 text-transform: uppercase; }
+  .term pre { margin: 0; padding: 18px 20px; overflow-x: auto;
+              font: 12px/1.75 var(--font-m); color: var(--ink); }
+  .term .h { color: var(--accent-text); font-weight: 600; }
+  .term .k { color: var(--dim2); }
+  .term .c { color: #b9b3e0; }
+  .term .i { color: var(--cyan); }
+
+  /* ---- also in the box ---- */
+  .more { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 36px; }
+  .more .item { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 20px; }
+  .more svg { width: 16px; height: 16px; stroke: var(--accent-text); fill: none;
+              stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; margin-bottom: 12px; }
+  .more b { display: block; font-size: 14px; margin-bottom: 4px; }
+  .more p { color: var(--dim); font-size: 13px; margin: 0; }
+  @media (max-width: 860px) { .more { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .more { grid-template-columns: 1fr; } }
+
+  /* ---- privacy ---- */
+  .priv { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 36px; }
+  .priv .tile { border: 1px solid var(--line); border-radius: 14px; padding: 22px;
+                background: linear-gradient(180deg, #16161e, var(--card)); }
+  .priv h3 { font-size: 16px; }
+  .priv p { color: var(--dim); font-size: 13.5px; margin: 0; }
+  @media (max-width: 860px) { .priv { grid-template-columns: 1fr; } }
+
+  /* ---- pricing ---- */
+  #install .card {
+    max-width: 560px; margin: 40px auto 0; background: var(--card);
+    border: 1px solid var(--line2); border-radius: 18px; padding: 36px;
+    text-align: center; box-shadow: 0 20px 70px rgba(0, 0, 0, 0.45);
+  }
+  .price { font: 800 54px/1 var(--font-d); letter-spacing: -0.03em; }
+  .price small { font: 600 15px var(--font-b); color: var(--dim); letter-spacing: 0; }
+  .plist { list-style: none; margin: 22px 0 26px; padding: 0; text-align: left;
+           display: grid; gap: 10px; }
+  .plist li { display: flex; gap: 10px; align-items: flex-start; color: var(--dim); font-size: 14px; }
+  .plist svg { width: 15px; height: 15px; flex: none; margin-top: 3px;
+               stroke: var(--accent-text); fill: none; stroke-width: 2.5;
+               stroke-linecap: round; stroke-linejoin: round; }
+  .plist b { color: var(--ink); font-weight: 600; }
+  .paynote { font: 11.5px var(--font-m); color: var(--dim2); margin-top: 14px; }
+  .soon { font: 12.5px var(--font-m); color: var(--dim2); border: 1px dashed var(--line2);
+          border-radius: 10px; padding: 10px 14px; display: inline-block; }
+
+  /* ---- FAQ ---- */
+  .faq { max-width: 720px; }
+  .faq details { border-bottom: 1px solid var(--line); padding: 4px 0; }
+  .faq summary { cursor: pointer; list-style: none; display: flex; align-items: center;
+                 justify-content: space-between; gap: 16px; padding: 16px 0;
+                 font: 600 15px var(--font-b); color: var(--ink); }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; font: 400 20px/1 var(--font-m); color: var(--dim2); flex: none; }
+  .faq details[open] summary::after { content: "\2212"; }
+  .faq details p { color: var(--dim); font-size: 14px; margin: 0 0 18px; max-width: 640px; }
+
+  /* ---- footer ---- */
+  footer { border-top: 1px solid var(--line); padding: 34px 0 46px; }
+  .foot-in { display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+             color: var(--dim2); font-size: 13px; }
+  .foot-in .brand { font-size: 14px; }
+  .foot-links { margin-left: auto; display: flex; gap: 18px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <a class="brand" href="#top"><span class="mark" role="img" aria-label="Notepix logo"></span>Notepix</a>
+    <div class="nav-links">
+      <a href="#how">How it works</a>
+      <a href="#features">Features</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#install">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a class="btn primary" data-store href="#install">Add to Chrome</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <p class="eyebrow">Chrome extension · for people who build with AI</p>
+    <h1>
+      Click <span class="hl">your app<span class="tag">&lt;main&gt; in App — src/App.jsx:12</span></span>,<br />
+      <span class="ink">tell AI what to fix.<svg viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden="true"><path d="M4 8 C 60 2, 118 11, 172 6 S 262 3, 296 7" /></svg></span>
+    </h1>
+    <p class="lede">
+      Notepix pins notes, frames and sketches onto your running web app — each one
+      resolved to the component and source file behind it — then hands the whole
+      batch to your AI coding agent as one precise brief. No more describing a
+      button and hoping the agent finds it.
+    </p>
+    <div class="cta-row">
+      <a class="btn primary big" data-store href="#install">Add to Chrome — free 7-day trial</a>
+      <a class="btn big" href="#how">See how it works</a>
+    </div>
+    <p class="fineprint">Chrome 111+ · works on Edge · $4.99 once after the trial, no subscription</p>
+
+    <div class="hero-art">
+      <figure class="browser" style="margin:0">
+        <div class="bar" aria-hidden="true">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="url">localhost:3000/demo.html</span>
+        </div>
+        <img src="assets/hero-plain.png" width="1280" height="800"
+             alt="A dashboard app with the Notepix panel open: numbered pins, a white frame and a red freehand circle on the page, each panel card naming the React component and source file behind its element, with a Copy for AI button" />
+      </figure>
+    </div>
+
+    <div class="agents">
+      Works with
+      <span>Claude Code</span><span>Cursor</span><span>GitHub Copilot</span>
+      <span>Windsurf</span><span>Codex</span>
+      — anything you can paste into. Deepest with Claude Code via Claude in Chrome.
+    </div>
+  </div>
+</header>
+
+<section id="how" style="padding-top:64px">
+  <div class="wrap">
+    <p class="eyebrow">How it works</p>
+    <h2>Three clicks from itch to diff.</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="n">1</div>
+        <h3>Summon the panel</h3>
+        <p>Open your running app and press <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd>
+           (Mac: <kbd>⌥⇧A</kbd>) or click the toolbar icon. On localhost it auto-loads,
+           so your marks survive every reload.</p>
+      </div>
+      <div class="step">
+        <div class="n">2</div>
+        <h3>Mark what bugs you</h3>
+        <p>Pin a Note to any element, drag a Frame around an area, or sketch with
+           the Pen. Write the change in plain words.</p>
+        <div class="quote">“Make this button bigger and green, like the one in the header”</div>
+      </div>
+      <div class="step">
+        <div class="n">3</div>
+        <h3>Copy for AI → paste</h3>
+        <p>One click puts the whole batch on your clipboard — every note bundled
+           with the exact element behind it. Paste it into your agent’s chat and
+           watch the fixes land.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="features" style="padding-top:24px">
+  <div class="wrap">
+    <p class="eyebrow">The marks</p>
+    <h2>Four ways to point. One precise brief.</h2>
+
+    <div class="feat" style="margin-top:10px">
+      <div class="txt">
+        <div class="mark-meta">
+          <span class="pin">1</span><span class="pill">NOTE</span>
+          <span class="msrc">click any element · say the change</span>
+        </div>
+        <h3>Point at the thing. Say what you want.</h3>
+        <p>Pick <b>Note</b> and click — a numbered pin lands on the element and you
+           type the change in plain words. Drag a <b>Frame</b> around an area, or
+           scribble with the <b>Pen</b> when showing beats telling.</p>
+        <p class="side">Attach up to four clean screenshots per mark right from the
+           editor, and drop <span style="font-family:var(--font-m)">@references</span> to other
+           elements — “make this match @Heading” — each resolved to its own component and style.</p>
+      </div>
+      <figure class="browser" style="margin:0">
+        <div class="bar" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">localhost:3000/demo.html</span></div>
+        <img src="assets/01-hero.png" width="1280" height="800" loading="lazy"
+             alt="The Notepix panel listing two marks with instructions written in plain words: tone down an upgrade button, equalize gaps between stat cards" />
+      </figure>
+    </div>
+
+    <div class="feat flip">
+      <div class="txt">
+        <div class="mark-meta">
+          <span class="pin">2</span><span class="pill">SOURCE</span>
+          <span class="msrc">src/demo/components/UpgradeButton.jsx:6:25</span>
+        </div>
+        <h3>Every mark knows the code behind it.</h3>
+        <p>On a dev build a mark doesn’t say <span style="font-family:var(--font-m)">div.css-1q2w3e</span> —
+           it says <span style="font-family:var(--font-m)">&lt;button&gt; in UpgradeButton —
+           src/components/UpgradeButton.jsx:6</span>. React 18 and 19, Vite, Next.js, CRA.
+           Your agent opens the right file instead of grepping for it.</p>
+        <p class="side">Each mark also snapshots the element’s computed style — font, color,
+           background, spacing, radius, size — and its class list, so the brief says what
+           the thing looks like <i>now</i>. Production or non-React page? It falls back to
+           a precise CSS selector.</p>
+      </div>
+      <figure class="browser" style="margin:0">
+        <div class="bar" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">localhost:3000/demo.html</span></div>
+        <img src="assets/02-source.png" width="1280" height="800" loading="lazy"
+             alt="Writing a note in the floating editor with a freehand red circle on the chart; the caption reads: every mark knows the React component and file behind it" />
+      </figure>
+    </div>
+
+    <div class="feat">
+      <div class="txt">
+        <div class="mark-meta">
+          <span class="pin">3</span><span class="pill">MEASURE</span>
+          <span class="msrc">font 14px · pad 18 20 · gap ←18 →18</span>
+        </div>
+        <h3>Cite real pixels, not vibes.</h3>
+        <p>Hovering shows a DevTools-grade readout: padding and margin rings, plus the
+           <b>measured gap</b> to each neighbor — the real rendered distance after margin
+           collapse, the sibling’s own margin, or a flex gap.</p>
+        <p class="side">So a note can say “there’s 24px between these two — make it 8”
+           and be exactly right, without ever opening DevTools.</p>
+      </div>
+      <figure class="browser" style="margin:0">
+        <div class="bar" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">localhost:3000/demo.html</span></div>
+        <img src="assets/03-measure.png" width="1280" height="800" loading="lazy"
+             alt="Hovering a stat card shows the component label, padding ring and measured 18-pixel gaps to its sibling cards, with a chip reading font 14px, pad 18 20, gap 18" />
+      </figure>
+    </div>
+
+    <div class="feat flip">
+      <div class="txt">
+        <div class="mark-meta">
+          <span class="pin">4</span><span class="pill">BRIEF</span>
+          <span class="msrc">markdown · plain text · JSON · Claude in Chrome · MCP</span>
+        </div>
+        <h3>One click. One brief any agent can act on.</h3>
+        <p><b>Copy for AI</b> bundles every open mark — element, source, current style,
+           your instruction, resolved @references — into one paste. Five formats,
+           including a hand-off prompt that lets Claude Code read the marks straight
+           off the page through Claude in Chrome. Or skip the paste altogether and let
+           an MCP agent read them itself.</p>
+        <p class="side">Screenshots leave stamped with their mark’s
+           <span style="font-family:var(--font-m)">#id</span> badge and matching file names,
+           so images and instructions can’t get separated — whatever order they’re pasted in.</p>
+      </div>
+      <div class="term" role="img" aria-label="The markdown brief Notepix copies to the clipboard">
+        <div class="thead">clipboard · markdown brief</div>
+        <pre><span class="h"># UI annotations</span>
+<span class="k">Page:</span> http://localhost:3000/demo.html
+
+Apply the requested change for each item, then I'll re-check in the browser.
+
+<span class="h">## #1 — note</span>
+<span class="k">- jsx:</span> <span class="c">`&lt;button&gt; in UpgradeButton @ src/demo/components/UpgradeButton.jsx:6:25`</span>
+<span class="k">- class:</span> <span class="c">`btn-upgrade`</span>
+<span class="k">- current style:</span> font 14px 800 Arial · color #ffffff · bg gradient #f7a11b→#ef6820 · pad 11 22 · radius 10 · 169×45
+<span class="k">- instruction:</span> <span class="i">Tone this down — ghost style, brand blue like the rest of the nav</span>
+
+<span class="h">## #2 — frame</span>
+<span class="k">- jsx:</span> <span class="c">`&lt;div&gt; in StatCard @ src/demo/components/StatCard.jsx:15:20`</span>
+<span class="k">- area:</span> x=64 y=170 w=1152 h=124
+<span class="k">- instruction:</span> <span class="i">Equal gaps between these three cards on every breakpoint</span></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="loop" style="padding-top:20px">
+  <div class="wrap">
+    <p class="eyebrow">The loop</p>
+    <h2>Pin. Your agent fixes. The card ticks itself.</h2>
+    <div class="feat" style="margin-top:10px">
+      <div class="txt">
+        <div class="mark-meta">
+          <span class="pin">✓</span><span class="pill">LIVE</span>
+          <span class="msrc">npx -y notepix-mcp setup · plug icon → green</span>
+        </div>
+        <h3>Skip the clipboard: the agent reads marks itself.</h3>
+        <p>One command registers the local Notepix server with every coding agent on
+           your machine — Claude Code, Cursor, Windsurf, VS&nbsp;Code, Codex, Gemini.
+           Switch the plug icon on and your agent pulls each mark straight from the
+           browser — element, source file, current style, screenshots — and flips its
+           card to <b>DONE</b> in front of you as it fixes it.</p>
+        <p class="side">Say <i>“fix each mark as I pin it”</i> and it waits for your next
+           pin, so you just keep clicking around your app while the diffs land. All of it
+           on <span style="font-family:var(--font-m)">127.0.0.1</span> — nothing leaves
+           your machine.</p>
+      </div>
+      <figure class="browser" style="margin:0">
+        <div class="bar" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">localhost:3000/demo.html</span></div>
+        <img src="assets/06-agent.png" width="1280" height="800" loading="lazy"
+             alt="The Notepix panel with a green plug icon and mark number one flipped to DONE with its text struck through — ticked off live by a connected AI agent over MCP" />
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:20px">
+  <div class="wrap">
+    <h2>Also in the box.</h2>
+    <div class="more">
+      <div class="item">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+        <b>Keyboard first</b>
+        <p><kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>N</kbd> or right-click → “New note” pins a
+           note without even opening the panel. Panel open? <kbd>N</kbd> <kbd>F</kbd>
+           <kbd>D</kbd> <kbd>S</kbd> switch modes — never while you’re typing.</p>
+      </div>
+      <div class="item">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2Z"/><circle cx="12" cy="13" r="4"/></svg>
+        <b>Clean screenshot crops</b>
+        <p>The 📷 on a card crops just that component — Notepix’s own pins and frames are
+           stripped out first. Shot mode captures any dragged area.</p>
+      </div>
+      <div class="item">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        <b>SPA-aware, per page</b>
+        <p>Each route keeps its own marks and the panel follows your client-side
+           navigation. A pages list shows every annotated route on the site.</p>
+      </div>
+      <div class="item">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>
+        <b>Export / import</b>
+        <p>Your notes are files: JSON out, JSON in — merge a teammate’s marks or move
+           machines. Never trapped in extension storage.</p>
+      </div>
+      <div class="item">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8Z"/><circle cx="12" cy="12" r="3"/></svg>
+        <b>Clean page by default</b>
+        <p>Pins draw only while you’re marking, or when the eye toggle is on. Hiding the
+           panel hides everything — your app stays presentable.</p>
+      </div>
+      <div class="item">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+        <b>Images that bind themselves</b>
+        <p>Every outgoing screenshot is stamped with its mark’s #id and named
+           <span style="font-family:var(--font-m)">notepix-3-shot1.png</span> — agents match
+           image to instruction by badge, not paste order.</p>
+      </div>
+      <div class="item">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg>
+        <b>A loop, not a one-shot</b>
+        <p>Agent fixed it? Tick the mark ✓ done — it stays for reference but drops out of
+           the next Copy for AI. And every delete offers a one-click Undo.</p>
+      </div>
+      <div class="item">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        <b>Stays out of your way</b>
+        <p>Ghost mode fades the panel to near-invisible until you hover it. Drag it anywhere,
+           resize it from any edge — it remembers both.</p>
+      </div>
+      <div class="item">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+        <b>Help is a ? away</b>
+        <p>The ? in the panel header reopens the 30-second guide. Shortcuts clash with your
+           keyboard layout? Rebind them at
+           <span style="font-family:var(--font-m)">chrome://extensions/shortcuts</span>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="privacy" style="padding-top:20px">
+  <div class="wrap">
+    <p class="eyebrow">Private by design</p>
+    <h2>Your app never leaves your machine.</h2>
+    <div class="priv">
+      <div class="tile">
+        <h3>No server, no account</h3>
+        <p>Notepix has no backend. Notes, screenshots and source paths live in
+           Chrome’s local extension storage on your machine — nowhere else.</p>
+      </div>
+      <div class="tile">
+        <h3>No tracking</h3>
+        <p>No analytics, no telemetry, no crash reporting. What you build and what
+           you annotate is your business.</p>
+      </div>
+      <div class="tile">
+        <h3>One network call, ever</h3>
+        <p>Zero requests until you enter a license key. Then exactly one kind:
+           verifying that key with Gumroad — it carries the key and product id,
+           never your pages or notes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="install" style="padding-top:20px">
+  <div class="wrap" style="text-align:center">
+    <p class="eyebrow" style="text-align:center">Pricing</p>
+    <h2>Free for 7 days. Then $4.99. Once.</h2>
+    <div class="card">
+      <div class="price">$4.99 <small>one-time · yours forever</small></div>
+      <ul class="plist">
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg>
+            <span><b>7-day trial, full-featured</b> — no account, no card, nothing to sign up for.</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg>
+            <span><b>One payment unlocks forever</b> — no subscription, no seat math.</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg>
+            <span><b>Your notes never lock</b> — viewing, copying and exporting existing
+            marks keeps working after the trial, paid or not.</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg>
+            <span><b>Moves with you</b> — the same license key unlocks Notepix on a new machine.</span></li>
+      </ul>
+      <a class="btn primary big" data-store data-store-main hidden href="#">Add to Chrome — free 7-day trial</a>
+      <p class="soon" data-soon>In review on the Chrome Web Store — the install button goes live with the listing.</p>
+      <p class="paynote">Checkout on Gumroad · your license key arrives by email · paste it in the panel to unlock</p>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="padding-top:20px">
+  <div class="wrap">
+    <h2>Questions, answered.</h2>
+    <div class="faq" style="margin-top:26px">
+      <details>
+        <summary>Do I need React for this to work?</summary>
+        <p>No — Notepix marks up any page. On a React <i>dev</i> build (Vite, Next.js, CRA;
+           React 18 and 19) each mark additionally records the component name and source
+           file:line behind the element. On production builds and non-React pages it falls
+           back to a precise CSS selector. Vue and Svelte source resolution is on the roadmap.</p>
+      </details>
+      <details>
+        <summary>Which AI agents does it work with?</summary>
+        <p>Anything you can paste into: Claude Code, Cursor, GitHub Copilot, Windsurf, Codex,
+           Aider, a plain chat window. The brief is plain text on your clipboard — no account
+           or setup required. You can also skip the paste entirely, two ways: with Claude Code
+           connected through Claude in Chrome (pick the hand-off format and it reads the marks
+           off the page), or by adding the optional Notepix MCP server — one command,
+           <span style="font-family:var(--font-m)">npx -y notepix-mcp setup</span>, registers it
+           with every coding agent on your machine — so your agent pulls
+           the marks and screenshots itself and ticks them off as it fixes them.</p>
+      </details>
+      <details>
+        <summary>Where do my notes live?</summary>
+        <p>In Chrome’s local extension storage, keyed per page and per SPA route. On
+           localhost dev servers Notepix auto-loads, so notes are still there after every
+           reload. You can export any page’s marks as a JSON file and import them anywhere.</p>
+      </details>
+      <details>
+        <summary>What does Notepix send over the network?</summary>
+        <p>Nothing leaves your computer — until you enter a license key. From then on there is
+           exactly one kind of internet
+           request: verifying your key against Gumroad’s license API at activation and at
+           most weekly. It carries the key and the product id, never page content, notes or
+           screenshots. If you switch on the optional MCP connection, that one goes to
+           <span style="font-family:var(--font-m)">127.0.0.1</span> — your own machine — and
+           nowhere else. The full policy is on the <a href="privacy.html">privacy page</a>.</p>
+      </details>
+      <details>
+        <summary>What happens when the trial ends?</summary>
+        <p>Creating <i>new</i> marks asks for the one-time $4.99 unlock. Everything you
+           already made stays viewable, copyable, exportable and deletable forever — your
+           notes are your data.</p>
+      </details>
+      <details>
+        <summary>The keyboard shortcut doesn’t do anything?</summary>
+        <p>Alt+Shift can collide with keyboard-layout switching, especially on Windows. Open
+           <span style="font-family:var(--font-m)">chrome://extensions/shortcuts</span> and rebind
+           “Toggle the Notepix panel” to anything you like — the toolbar icon and right-click
+           menu always work regardless.</p>
+      </details>
+      <details>
+        <summary>Chrome only?</summary>
+        <p>Chrome 111+ and Chromium-based Edge (tested). An Edge Add-ons listing and other
+           browsers are on the roadmap.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <span class="brand"><span class="mark" role="img" aria-label="Notepix logo"></span>Notepix</span>
+    <span>Click your app, tell AI what to fix.</span>
+    <div class="foot-links">
+      <a href="privacy.html">Privacy policy</a>
+      <a href="#faq">FAQ</a>
+      <a data-store href="#install">Add to Chrome</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // TODO(owner): after Chrome Web Store approval, paste the listing URL here
+  // and redeploy — every "Add to Chrome" button flips live automatically.
+  var STORE_URL = "";
+  (function () {
+    var links = document.querySelectorAll("a[data-store]");
+    for (var i = 0; i < links.length; i++) {
+      if (STORE_URL) {
+        links[i].href = STORE_URL;
+        links[i].removeAttribute("hidden");
+      }
+    }
+    var soon = document.querySelector("[data-soon]");
+    if (soon && STORE_URL) soon.remove();
+  })();
+</script>
+
+</body>
+</html>
