@@ -1,8 +1,155 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://mrt-hust.github.io/notepix-site/</loc>
-    <lastmod>2026-08-27</lastmod>
+    <lastmod>2026-08-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mrt-hust.github.io/notepix-site/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mrt-hust.github.io/notepix-site/" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://mrt-hust.github.io/notepix-site/vi/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://mrt-hust.github.io/notepix-site/zh/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://mrt-hust.github.io/notepix-site/ja/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://mrt-hust.github.io/notepix-site/ko/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://mrt-hust.github.io/notepix-site/es/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://mrt-hust.github.io/notepix-site/pt/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mrt-hust.github.io/notepix-site/fr/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://mrt-hust.github.io/notepix-site/de/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mrt-hust.github.io/notepix-site/ru/" />
+  </url>
+  <url>
+    <loc>https://mrt-hust.github.io/notepix-site/vi/</loc>
+    <lastmod>2026-08-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mrt-hust.github.io/notepix-site/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mrt-hust.github.io/notepix-site/" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://mrt-hust.github.io/notepix-site/vi/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://mrt-hust.github.io/notepix-site/zh/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://mrt-hust.github.io/notepix-site/ja/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://mrt-hust.github.io/notepix-site/ko/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://mrt-hust.github.io/notepix-site/es/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://mrt-hust.github.io/notepix-site/pt/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mrt-hust.github.io/notepix-site/fr/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://mrt-hust.github.io/notepix-site/de/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mrt-hust.github.io/notepix-site/ru/" />
+  </url>
+  <url>
+    <loc>https://mrt-hust.github.io/notepix-site/zh/</loc>
+    <lastmod>2026-08-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mrt-hust.github.io/notepix-site/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mrt-hust.github.io/notepix-site/" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://mrt-hust.github.io/notepix-site/vi/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://mrt-hust.github.io/notepix-site/zh/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://mrt-hust.github.io/notepix-site/ja/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://mrt-hust.github.io/notepix-site/ko/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://mrt-hust.github.io/notepix-site/es/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://mrt-hust.github.io/notepix-site/pt/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mrt-hust.github.io/notepix-site/fr/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://mrt-hust.github.io/notepix-site/de/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mrt-hust.github.io/notepix-site/ru/" />
+  </url>
+  <url>
+    <loc>https://mrt-hust.github.io/notepix-site/ja/</loc>
+    <lastmod>2026-08-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mrt-hust.github.io/notepix-site/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mrt-hust.github.io/notepix-site/" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://mrt-hust.github.io/notepix-site/vi/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://mrt-hust.github.io/notepix-site/zh/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://mrt-hust.github.io/notepix-site/ja/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://mrt-hust.github.io/notepix-site/ko/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://mrt-hust.github.io/notepix-site/es/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://mrt-hust.github.io/notepix-site/pt/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mrt-hust.github.io/notepix-site/fr/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://mrt-hust.github.io/notepix-site/de/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mrt-hust.github.io/notepix-site/ru/" />
+  </url>
+  <url>
+    <loc>https://mrt-hust.github.io/notepix-site/ko/</loc>
+    <lastmod>2026-08-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mrt-hust.github.io/notepix-site/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mrt-hust.github.io/notepix-site/" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://mrt-hust.github.io/notepix-site/vi/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://mrt-hust.github.io/notepix-site/zh/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://mrt-hust.github.io/notepix-site/ja/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://mrt-hust.github.io/notepix-site/ko/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://mrt-hust.github.io/notepix-site/es/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://mrt-hust.github.io/notepix-site/pt/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mrt-hust.github.io/notepix-site/fr/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://mrt-hust.github.io/notepix-site/de/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mrt-hust.github.io/notepix-site/ru/" />
+  </url>
+  <url>
+    <loc>https://mrt-hust.github.io/notepix-site/es/</loc>
+    <lastmod>2026-08-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mrt-hust.github.io/notepix-site/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mrt-hust.github.io/notepix-site/" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://mrt-hust.github.io/notepix-site/vi/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://mrt-hust.github.io/notepix-site/zh/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://mrt-hust.github.io/notepix-site/ja/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://mrt-hust.github.io/notepix-site/ko/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://mrt-hust.github.io/notepix-site/es/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://mrt-hust.github.io/notepix-site/pt/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mrt-hust.github.io/notepix-site/fr/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://mrt-hust.github.io/notepix-site/de/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mrt-hust.github.io/notepix-site/ru/" />
+  </url>
+  <url>
+    <loc>https://mrt-hust.github.io/notepix-site/pt/</loc>
+    <lastmod>2026-08-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mrt-hust.github.io/notepix-site/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mrt-hust.github.io/notepix-site/" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://mrt-hust.github.io/notepix-site/vi/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://mrt-hust.github.io/notepix-site/zh/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://mrt-hust.github.io/notepix-site/ja/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://mrt-hust.github.io/notepix-site/ko/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://mrt-hust.github.io/notepix-site/es/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://mrt-hust.github.io/notepix-site/pt/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mrt-hust.github.io/notepix-site/fr/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://mrt-hust.github.io/notepix-site/de/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mrt-hust.github.io/notepix-site/ru/" />
+  </url>
+  <url>
+    <loc>https://mrt-hust.github.io/notepix-site/fr/</loc>
+    <lastmod>2026-08-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mrt-hust.github.io/notepix-site/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mrt-hust.github.io/notepix-site/" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://mrt-hust.github.io/notepix-site/vi/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://mrt-hust.github.io/notepix-site/zh/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://mrt-hust.github.io/notepix-site/ja/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://mrt-hust.github.io/notepix-site/ko/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://mrt-hust.github.io/notepix-site/es/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://mrt-hust.github.io/notepix-site/pt/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mrt-hust.github.io/notepix-site/fr/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://mrt-hust.github.io/notepix-site/de/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mrt-hust.github.io/notepix-site/ru/" />
+  </url>
+  <url>
+    <loc>https://mrt-hust.github.io/notepix-site/de/</loc>
+    <lastmod>2026-08-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mrt-hust.github.io/notepix-site/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mrt-hust.github.io/notepix-site/" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://mrt-hust.github.io/notepix-site/vi/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://mrt-hust.github.io/notepix-site/zh/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://mrt-hust.github.io/notepix-site/ja/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://mrt-hust.github.io/notepix-site/ko/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://mrt-hust.github.io/notepix-site/es/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://mrt-hust.github.io/notepix-site/pt/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mrt-hust.github.io/notepix-site/fr/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://mrt-hust.github.io/notepix-site/de/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mrt-hust.github.io/notepix-site/ru/" />
+  </url>
+  <url>
+    <loc>https://mrt-hust.github.io/notepix-site/ru/</loc>
+    <lastmod>2026-08-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mrt-hust.github.io/notepix-site/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mrt-hust.github.io/notepix-site/" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://mrt-hust.github.io/notepix-site/vi/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://mrt-hust.github.io/notepix-site/zh/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://mrt-hust.github.io/notepix-site/ja/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://mrt-hust.github.io/notepix-site/ko/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://mrt-hust.github.io/notepix-site/es/" />
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://mrt-hust.github.io/notepix-site/pt/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mrt-hust.github.io/notepix-site/fr/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://mrt-hust.github.io/notepix-site/de/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mrt-hust.github.io/notepix-site/ru/" />
   </url>
   <url>
     <loc>https://mrt-hust.github.io/notepix-site/privacy.html</loc>

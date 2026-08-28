@@ -1,0 +1,640 @@
+<!doctype html>
+<!-- Notepix landing — Spanish. Mirrors /index.html: same structure, translated copy.
+     Keep edits in sync. STORE_URL lives in ../assets/site.js. -->
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Notepix — Haz clic en tu app, dile a la IA qué arreglar | Extensión de Chrome para agentes de código IA</title>
+<meta name="description" content="Haz clic en cualquier elemento, escribe el cambio y tu agente de código IA recibe el componente, el archivo fuente y el estilo exactos. Funciona con Claude Code, Cursor, Copilot." />
+<link rel="canonical" href="https://mrt-hust.github.io/notepix-site/es/" />
+<link rel="alternate" hreflang="x-default" href="https://mrt-hust.github.io/notepix-site/" />
+<link rel="alternate" hreflang="en" href="https://mrt-hust.github.io/notepix-site/" />
+<link rel="alternate" hreflang="vi" href="https://mrt-hust.github.io/notepix-site/vi/" />
+<link rel="alternate" hreflang="zh-Hans" href="https://mrt-hust.github.io/notepix-site/zh/" />
+<link rel="alternate" hreflang="ja" href="https://mrt-hust.github.io/notepix-site/ja/" />
+<link rel="alternate" hreflang="ko" href="https://mrt-hust.github.io/notepix-site/ko/" />
+<link rel="alternate" hreflang="es" href="https://mrt-hust.github.io/notepix-site/es/" />
+<link rel="alternate" hreflang="pt-BR" href="https://mrt-hust.github.io/notepix-site/pt/" />
+<link rel="alternate" hreflang="fr" href="https://mrt-hust.github.io/notepix-site/fr/" />
+<link rel="alternate" hreflang="de" href="https://mrt-hust.github.io/notepix-site/de/" />
+<link rel="alternate" hreflang="ru" href="https://mrt-hust.github.io/notepix-site/ru/" />
+<meta name="theme-color" content="#08080f" />
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
+<link rel="apple-touch-icon" href="../assets/icon-128.png" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="es_ES" />
+<meta property="og:site_name" content="Notepix" />
+<meta property="og:url" content="https://mrt-hust.github.io/notepix-site/es/" />
+<meta property="og:title" content="Notepix — haz clic en tu app, dile a la IA qué arreglar" />
+<meta property="og:description" content="Fija notas, marcos y trazos sobre tu app en ejecución — cada marca resuelta al componente y archivo fuente que hay detrás — y entrega el lote a tu agente de código IA como un solo brief preciso." />
+<meta property="og:image" content="https://mrt-hust.github.io/notepix-site/assets/og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Una app de panel con pines de Notepix, un marco y un círculo a mano alzada; el panel lista cada marca con el componente React y el archivo fuente que hay detrás" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Notepix — haz clic en tu app, dile a la IA qué arreglar" />
+<meta name="twitter:description" content="Fija notas sobre tu app en ejecución; tu agente de código IA recibe el componente, archivo y estilo exactos de cada marca — o las lee él mismo por MCP." />
+<meta name="twitter:image" content="https://mrt-hust.github.io/notepix-site/assets/og.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Notepix",
+  "inLanguage": "es",
+  "operatingSystem": "Chrome 116+ (Windows, macOS, Linux)",
+  "applicationCategory": "DeveloperApplication",
+  "url": "https://mrt-hust.github.io/notepix-site/es/",
+  "image": "https://mrt-hust.github.io/notepix-site/assets/og.png",
+  "description": "Extensión de Chrome que fija notas, marcos y trazos sobre tu app web en ejecución — cada marca resuelta al componente React, archivo fuente y estilo computado que hay detrás — y entrega el lote a un agente de código IA como un solo brief preciso, o lo sirve en vivo por MCP.",
+  "offers": {
+    "@type": "Offer",
+    "price": "6.43",
+    "priceCurrency": "USD",
+    "description": "Desbloqueo único tras 7 días de prueba gratuita con todas las funciones. Sin suscripción."
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Notepix",
+  "inLanguage": "es",
+  "url": "https://mrt-hust.github.io/notepix-site/es/"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "es",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Necesito React para que funcione?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No — Notepix marca cualquier página. En un build dev de React (Vite, Next.js, CRA; React 18 y 19) cada marca registra además el nombre del componente y el archivo:línea fuente detrás del elemento. En builds de producción y páginas sin React recurre a un selector CSS preciso. La resolución de fuentes para Vue y Svelte está en el roadmap." }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Con qué agentes de IA funciona?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Con cualquiera donde puedas pegar: Claude Code, Cursor, GitHub Copilot, Windsurf, Codex, Aider, una ventana de chat normal. El brief es texto plano en tu portapapeles — sin cuenta ni configuración. También puedes saltarte el pegado por completo: con Claude Code conectado mediante Claude in Chrome, o añadiendo el servidor MCP opcional de Notepix (npx -y notepix-mcp setup) para que tu agente extraiga él mismo las marcas y capturas y las vaya tachando a medida que las corrige." }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Funciona en previews de Lovable, Replit, v0 o Bolt?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Sí — haz clic en el icono de Notepix en la barra de herramientas en cualquier página http(s), previews en la nube incluidas, y márcala. En servidores dev en localhost Notepix se carga solo tras cada recarga; la carga automática con un clic para dominios de preview es la próxima actualización prevista." }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Dónde viven mis notas?",
+      "acceptedAnswer": { "@type": "Answer", "text": "En el almacenamiento local de extensiones de Chrome, por página y por ruta de SPA. En servidores dev en localhost Notepix se carga solo, así que las notas siguen ahí tras cada recarga. Puedes exportar las marcas de cualquier página como archivo JSON e importarlas donde quieras." }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué envía Notepix por la red?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Nada sale de tu ordenador — hasta que introduces una clave de licencia. Desde entonces hay exactamente un tipo de petición a internet: verificar tu clave contra la API de licencias de Gumroad al activarla y como mucho una vez por semana. Lleva la clave y el id del producto, nunca contenido de páginas, notas ni capturas. Si activas la conexión MCP opcional, esa va a 127.0.0.1 — tu propia máquina — y a ningún otro sitio." }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué pasa cuando termina la prueba?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Crear marcas nuevas pide el desbloqueo único de $6.43. Todo lo que ya hiciste sigue siendo visible, copiable, exportable y borrable para siempre — tus notas son tus datos." }
+    },
+    {
+      "@type": "Question",
+      "name": "¿El atajo de teclado no hace nada?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Alt+Shift puede chocar con el cambio de distribución de teclado, sobre todo en Windows. Abre chrome://extensions/shortcuts y reasigna “Toggle the Notepix panel” a lo que quieras — el icono de la barra y el menú contextual funcionan siempre." }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Solo Chrome?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Chrome 116+ y Edge basado en Chromium (probado). Un listado en Edge Add-ons y otros navegadores están en el roadmap." }
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../assets/site.css" />
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+
+<div class="navwrap">
+  <nav>
+    <a class="brand" href="#top"><span class="mark" aria-hidden="true"></span>Notepix</a>
+    <div class="nav-links">
+      <a href="#how">Cómo funciona</a>
+      <a href="#features">Funciones</a>
+      <a href="#privacy">Privacidad</a>
+      <a href="#install">Precio</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a class="btn primary" data-store href="#install">Añadir a Chrome</a>
+  </nav>
+</div>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+    <div class="hero-copy">
+    <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Extensión de Chrome · para builders con IA</p>
+    <h1>
+      Clic en <span class="hl">tu app<span class="tag" aria-hidden="true">&lt;main&gt; in App — src/App.jsx:12</span></span>,<br />
+      <span class="ink">dile a la IA qué arreglar.<svg viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden="true"><path d="M4 8 C 60 2, 118 11, 172 6 S 262 3, 296 7" /></svg></span>
+    </h1>
+    <p class="lede">
+      Fija notas sobre tu app en ejecución — tu agente de código IA recibe el
+      componente, el archivo fuente y el estilo exactos detrás de cada marca.
+    </p>
+    <div class="cta-row">
+      <a class="btn primary big" data-store href="#install">Añadir a Chrome — 7 días gratis</a>
+      <a class="btn big" href="#how">Ver cómo funciona</a>
+    </div>
+    <p class="fineprint">Chrome 116+ · funciona en Edge · $6.43 una vez, sin suscripción</p>
+    </div>
+
+    <div class="hero-art">
+      <div class="scene" role="img"
+           aria-label="Una app web estilizada con marcas de Notepix: una tarjeta de estadísticas está seleccionada como elemento y etiquetada div in StatCard — src/components/StatCard.jsx:15 con el pin 1, un círculo rojo a mano alzada rodea una barra del gráfico con el pin 2, y el panel flotante de Notepix lista ambas marcas con sus archivos fuente y un botón Copy for AI">
+        <div class="app" aria-hidden="true">
+          <div class="app-top">
+            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+            <span class="app-url">localhost:3000</span>
+          </div>
+          <div class="app-body">
+            <div class="app-side">
+              <span class="s-logo"></span>
+              <span class="s-line on" style="width:78%"></span>
+              <span class="s-line" style="width:58%"></span>
+              <span class="s-line" style="width:70%"></span>
+              <span class="s-line" style="width:46%"></span>
+              <span class="s-line" style="width:64%"></span>
+            </div>
+            <div class="main">
+              <div class="m-head">
+                <div>
+                  <div class="m-hi">Good morning, Alex</div>
+                  <div class="m-sub">Here’s what happened across your workspace this week.</div>
+                </div>
+                <span class="m-avatar">AL</span>
+              </div>
+              <div class="stats">
+                <div class="stat">
+                  <span class="st-label">REVENUE</span>
+                  <span class="st-val">$12,480</span>
+                  <span class="st-delta up">▲ +8.2%</span>
+                </div>
+                <div class="stat picked">
+                  <span class="tag2">&lt;div&gt; in StatCard — StatCard.jsx:15</span>
+                  <span class="pin p1">1</span>
+                  <span class="st-label">ACTIVE USERS</span>
+                  <span class="st-val">1,284</span>
+                  <span class="st-delta up">▲ +3.1%</span>
+                  <svg class="cursor" viewBox="0 0 24 24"><path d="M5 2.5 18.5 12l-6.3 1.3 3.4 6.2-3 1.6-3.4-6.3L5 18.8Z" fill="#fff" stroke="#111" stroke-width="1.3" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="stat">
+                  <span class="st-label">CHURN</span>
+                  <span class="st-val">2.4%</span>
+                  <span class="st-delta down">▼ −0.4%</span>
+                </div>
+              </div>
+              <div class="chart">
+                <div class="ch-head"><b>Revenue</b><span>last 12 weeks</span></div>
+                <div class="bars">
+                  <i style="--h:36%"></i><i style="--h:52%"></i><i style="--h:44%"></i>
+                  <i style="--h:58%"></i>
+                  <i class="hot" style="--h:96%">
+                    <svg class="scribble" viewBox="0 0 60 150" aria-hidden="true"><path d="M30 10 C 48 6, 57 34, 54 76 C 51 116, 38 142, 22 138 C 8 134, 3 100, 6 62 C 9 28, 16 12, 32 12 C 40 12, 45 18, 46 26" /></svg>
+                    <span class="pin p2">2</span>
+                  </i>
+                  <i style="--h:64%"></i><i style="--h:56%"></i><i style="--h:48%"></i>
+                  <i style="--h:50%"></i><i style="--h:62%"></i><i style="--h:54%"></i>
+                  <i style="--h:70%"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <aside class="panel" aria-hidden="true">
+          <div class="pn-head"><span class="pn-logo"></span>NOTEPIX<span class="pn-plug">● MCP</span></div>
+          <div class="pn-tools"><b class="on">Note</b><b>Frame</b><b>Draw</b><b>Shot</b></div>
+          <div class="pn-card">
+            <div class="pn-meta"><span class="pn-id">#1</span><span class="pn-kind">NOTE</span></div>
+            <div class="pn-src">&lt;div&gt; in StatCard — src/components/StatCard.jsx:15</div>
+            <div class="pn-note">Equal gaps between these cards</div>
+          </div>
+          <div class="pn-card">
+            <div class="pn-meta"><span class="pn-id">#2</span><span class="pn-kind">DRAW</span></div>
+            <div class="pn-src">&lt;svg&gt; in RevenueChart — src/components/Chart.jsx:42</div>
+            <div class="pn-note">Cap the y-axis at $2k</div>
+          </div>
+          <div class="pn-foot"><span class="pn-ghost">Markdown</span><span class="pn-cta">Copy for AI</span></div>
+        </aside>
+      </div>
+    </div>
+    </div>
+
+    <div class="agents" data-reveal>
+      Funciona con
+      <span>Claude Code</span><span>Cursor</span><span>GitHub Copilot</span>
+      <span>Windsurf</span><span>Codex</span>
+      — cualquier sitio donde puedas pegar.
+    </div>
+  </div>
+</header>
+
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <p class="eyebrow">Cómo funciona</p>
+      <h2>Tres clics del picor al diff.</h2>
+    </div>
+    <div class="steps">
+      <div class="step" style="--i:0" data-reveal>
+        <div class="n">1</div>
+        <h3>Invoca el panel</h3>
+        <p>Pulsa <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> (Mac: <kbd>⌥⇧A</kbd>)
+           en tu app en ejecución, o haz clic en el icono de la barra. Se carga solo en localhost.</p>
+      </div>
+      <div class="step" style="--i:1" data-reveal>
+        <div class="n">2</div>
+        <h3>Marca lo que te molesta</h3>
+        <p>Fija una Note en cualquier elemento, arrastra un Frame alrededor de un área
+           o dibuja con el Pen. Escribe el cambio con tus palabras.</p>
+        <div class="quote">“Haz este botón más grande y verde, como el del header”</div>
+      </div>
+      <div class="step" style="--i:2" data-reveal>
+        <div class="n">3</div>
+        <h3>Copy for AI → pegar</h3>
+        <p>Un clic empaqueta cada marca con el elemento exacto que hay detrás.
+           Pégalo en el chat de tu agente y mira aterrizar los arreglos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <p class="eyebrow">Las marcas</p>
+      <h2>Cuatro formas de señalar. Un brief preciso.</h2>
+    </div>
+
+    <div class="feats">
+      <div class="feat" data-reveal>
+        <div class="txt">
+          <div class="mark-meta">
+            <span class="pin">1</span><span class="pill">NOTE</span>
+            <span class="msrc">clic en cualquier elemento · di el cambio</span>
+          </div>
+          <h3>Señala la cosa. Di lo que quieres.</h3>
+          <p>Elige <b>Note</b> y haz clic — un pin numerado cae sobre el elemento y
+             escribes el cambio. Arrastra un <b>Frame</b> alrededor de un área o garabatea con el <b>Pen</b>.</p>
+          <p class="side">Adjunta capturas limpias por marca y suelta
+             <span style="font-family:var(--font-m)">@referencias</span> a otros elementos —
+             “que esto coincida con @Heading”.</p>
+        </div>
+        <figure class="browser">
+          <div class="bar" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">localhost:3000/demo.html</span></div>
+          <img src="../assets/01-hero.png" width="1280" height="800" loading="lazy"
+               alt="El panel de Notepix listando dos marcas con instrucciones en palabras llanas: suavizar un botón de upgrade, igualar los huecos entre tarjetas de estadísticas" />
+        </figure>
+      </div>
+
+      <div class="feat flip" data-reveal>
+        <div class="txt">
+          <div class="mark-meta">
+            <span class="pin">2</span><span class="pill">SOURCE</span>
+            <span class="msrc">src/demo/components/UpgradeButton.jsx:6:25</span>
+          </div>
+          <h3>Cada marca conoce el código que hay detrás.</h3>
+          <p>No <span style="font-family:var(--font-m)">div.css-1q2w3e</span> —
+             sino <span style="font-family:var(--font-m)">&lt;button&gt; in UpgradeButton —
+             src/components/UpgradeButton.jsx:6</span>. React 18/19, Vite, Next.js, CRA.
+             Tu agente abre el archivo correcto en vez de buscarlo con grep.</p>
+          <p class="side">Cada marca también captura el estilo computado y la lista de clases
+             del elemento. ¿Página sin React? Recurre a un selector CSS preciso.</p>
+        </div>
+        <figure class="browser">
+          <div class="bar" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">localhost:3000/demo.html</span></div>
+          <img src="../assets/02-source.png" width="1280" height="800" loading="lazy"
+               alt="Escribiendo una nota en el editor flotante con un círculo rojo a mano alzada sobre el gráfico; la leyenda dice: cada marca conoce el componente React y el archivo detrás" />
+        </figure>
+      </div>
+
+      <div class="feat" data-reveal>
+        <div class="txt">
+          <div class="mark-meta">
+            <span class="pin">3</span><span class="pill">MEASURE</span>
+            <span class="msrc">font 14px · pad 18 20 · gap ←18 →18</span>
+          </div>
+          <h3>Cita píxeles reales, no sensaciones.</h3>
+          <p>Al pasar el cursor aparece una lectura de nivel DevTools: padding, margen y el
+             <b>hueco medido</b> hasta cada vecino — píxeles reales renderizados.</p>
+          <p class="side">Así una nota puede decir “24px entre estos — déjalo en 8”
+             sin abrir DevTools jamás.</p>
+        </div>
+        <figure class="browser">
+          <div class="bar" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">localhost:3000/demo.html</span></div>
+          <img src="../assets/03-measure.png" width="1280" height="800" loading="lazy"
+               alt="Al pasar el cursor por una tarjeta se ven la etiqueta del componente, el anillo de padding y los huecos medidos de 18 píxeles hasta las tarjetas vecinas, con un chip que dice font 14px, pad 18 20, gap 18" />
+        </figure>
+      </div>
+
+      <div class="feat flip" data-reveal>
+        <div class="txt">
+          <div class="mark-meta">
+            <span class="pin">4</span><span class="pill">BRIEF</span>
+            <span class="msrc">markdown · plain text · JSON · Claude in Chrome · MCP</span>
+          </div>
+          <h3>Un clic. Un brief que cualquier agente puede ejecutar.</h3>
+          <p><b>Copy for AI</b> empaqueta cada marca abierta — elemento, fuente, estilo,
+             instrucción — en un solo pegado. Cinco formatos, incluido un prompt de
+             traspaso para Claude Code vía Claude in Chrome.</p>
+          <p class="side">Las capturas salen selladas con la insignia
+             <span style="font-family:var(--font-m)">#id</span> de su marca — imágenes e
+             instrucciones no pueden separarse.</p>
+        </div>
+        <div class="term" role="img" aria-label="El brief en markdown que Notepix copia al portapapeles">
+          <div class="thead"><span class="dot"></span><span class="dot"></span><span class="dot"></span>portapapeles · brief en markdown</div>
+          <pre><span class="h"># UI annotations</span>
+<span class="k">Page:</span> http://localhost:3000/demo.html
+
+<span class="h">## #1 — note</span>
+<span class="k">- jsx:</span> <span class="c">`&lt;button&gt; in UpgradeButton`</span>
+       <span class="c">@ src/components/UpgradeButton.jsx:6</span>
+<span class="k">- style:</span> 14px 800 · #fff on #f7a11b→#ef6820 · pad 11 22
+<span class="k">- instruction:</span> <span class="i">Tone it down — ghost style</span>
+
+<span class="h">## #2 — frame</span>
+<span class="k">- jsx:</span> <span class="c">`&lt;div&gt; in StatCard`</span>
+       <span class="c">@ src/components/StatCard.jsx:15</span>
+<span class="k">- area:</span> x=64 y=170 w=1152 h=124
+<span class="k">- instruction:</span> <span class="i">Equal gaps between these cards</span></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="loop">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <p class="eyebrow">El bucle</p>
+      <h2>Fija. Tu agente corrige. La tarjeta se marca sola.</h2>
+    </div>
+    <div class="feats">
+      <div class="feat" data-reveal>
+        <div class="txt">
+          <div class="mark-meta">
+            <span class="pin">✓</span><span class="pill">LIVE</span>
+            <span class="msrc">npx -y notepix-mcp setup · icono del enchufe → verde</span>
+          </div>
+          <h3>Sáltate el portapapeles: el agente lee las marcas él mismo.</h3>
+          <p>Un comando registra el servidor local de Notepix en cada agente de código de
+             tu máquina. Tu agente extrae cada marca directamente del navegador y pone su
+             tarjeta en <b>DONE</b> ante tus ojos mientras la corrige.</p>
+          <p class="side">Di <i>“corrige cada marca según la fijo”</i> y sigue haciendo clic
+             por tu app mientras aterrizan los diffs. Todo en
+             <span style="font-family:var(--font-m)">127.0.0.1</span>.</p>
+        </div>
+        <figure class="browser">
+          <div class="bar" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">localhost:3000/demo.html</span></div>
+          <img src="../assets/06-agent.png" width="1280" height="800" loading="lazy"
+               alt="El panel de Notepix con un icono de enchufe verde y la marca número uno pasada a DONE con su texto tachado — completada en vivo por un agente de IA conectado por MCP" />
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="box">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <p class="eyebrow">Detalles</p>
+      <h2>También en la caja.</h2>
+    </div>
+    <div class="more">
+      <div class="item" style="--i:0" data-reveal>
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></div>
+        <b>Teclado primero</b>
+        <p><kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>N</kbd> fija una nota sin abrir el
+           panel. Dentro, <kbd>N</kbd> <kbd>F</kbd> <kbd>D</kbd> <kbd>S</kbd> cambian de modo.</p>
+      </div>
+      <div class="item" style="--i:1" data-reveal>
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2Z"/><circle cx="12" cy="13" r="4"/></svg></div>
+        <b>Recortes de captura limpios</b>
+        <p>La 📷 recorta solo ese componente — los pines del propio Notepix se eliminan antes.</p>
+      </div>
+      <div class="item" style="--i:2" data-reveal>
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <b>Consciente de SPA, por página</b>
+        <p>Cada ruta conserva sus marcas; el panel sigue tu navegación client-side.</p>
+      </div>
+      <div class="item" style="--i:0" data-reveal>
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg></div>
+        <b>Exportar / importar</b>
+        <p>JSON fuera, JSON dentro — fusiona las marcas de un compañero o cambia de máquina.</p>
+      </div>
+      <div class="item" style="--i:1" data-reveal>
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8Z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <b>Página limpia por defecto</b>
+        <p>Los pines solo se dibujan mientras marcas. Oculta el panel y tu app queda presentable.</p>
+      </div>
+      <div class="item" style="--i:2" data-reveal>
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
+        <b>Imágenes que se atan solas</b>
+        <p>Cada captura va sellada con el #id de su marca — los agentes emparejan imagen
+           e instrucción por insignia, no por orden de pegado.</p>
+      </div>
+      <div class="item" style="--i:0" data-reveal>
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg></div>
+        <b>Un bucle, no un disparo único</b>
+        <p>Marca una nota como ✓ hecha — se queda como referencia pero sale de la próxima
+           copia. Cada borrado ofrece Undo.</p>
+      </div>
+      <div class="item" style="--i:1" data-reveal>
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg></div>
+        <b>No se interpone</b>
+        <p>El modo Ghost atenúa el panel hasta que pasas el cursor. Arrástralo a donde sea, redimensiona desde cualquier borde.</p>
+      </div>
+      <div class="item" style="--i:2" data-reveal>
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></div>
+        <b>La ayuda está a un ? de distancia</b>
+        <p>El ? reabre la guía de 30 segundos. Reasigna atajos en
+           <span style="font-family:var(--font-m)">chrome://extensions/shortcuts</span>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="privacy">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <p class="eyebrow">Privado por diseño</p>
+      <h2>Tu app nunca sale de tu máquina.</h2>
+    </div>
+    <div class="priv" data-reveal>
+      <div class="tile">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+        <h3>Sin servidor, sin cuenta</h3>
+        <p>Sin backend. Notas, capturas y rutas fuente viven en el almacenamiento local
+           de Chrome en tu máquina — en ningún otro sitio.</p>
+      </div>
+      <div class="tile">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 2l20 20"/><path d="M6.71 6.71C4.24 8.16 2.5 10.5 1 12c1.5 1.5 4.5 8 11 8 1.86 0 3.47-.53 4.84-1.32"/><path d="M10.5 5.2A10.7 10.7 0 0 1 12 5c6.5 0 9.5 6.5 11 7-1 1-2.06 2.55-3.6 3.9"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>
+        <h3>Sin rastreo</h3>
+        <p>Sin analítica, sin telemetría, sin informes de errores. Lo que anotas es
+           asunto tuyo.</p>
+      </div>
+      <div class="tile">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <h3>Una llamada de red, en total</h3>
+        <p>Cero peticiones hasta que introduces una clave de licencia — luego solo una
+           clase: verificarla con Gumroad. Nunca tus páginas ni tus notas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="install">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <p class="eyebrow">Precio</p>
+      <h2>Gratis 7 días. Luego $6.43. Una vez.</h2>
+    </div>
+    <div class="card" data-reveal>
+      <div class="buy">
+        <div class="price">$6.43 <small>pago único · tuyo para siempre</small></div>
+        <a class="btn primary big" data-store data-store-main hidden href="#">Añadir a Chrome — 7 días gratis</a>
+        <p class="soon" data-soon><span class="sdot" aria-hidden="true"></span>En revisión en la Chrome Web Store — el botón de instalar se activará con el listado.</p>
+        <p class="paynote">Pago en Gumroad · clave de licencia por email · se desbloquea en el panel</p>
+      </div>
+      <ul class="plist">
+        <li><span class="ck"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg></span>
+            <span><b>Prueba de 7 días, completa</b> — sin cuenta, sin tarjeta, sin registrarte.</span></li>
+        <li><span class="ck"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg></span>
+            <span><b>Un pago desbloquea para siempre</b> — sin suscripción, sin contar asientos.</span></li>
+        <li><span class="ck"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg></span>
+            <span><b>Tus notas nunca se bloquean</b> — ver, copiar y exportar marcas
+            existentes sigue funcionando tras la prueba, pagues o no.</span></li>
+        <li><span class="ck"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg></span>
+            <span><b>Se muda contigo</b> — la misma clave de licencia desbloquea Notepix en una máquina nueva.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <p class="eyebrow">FAQ</p>
+      <h2>Preguntas, respondidas.</h2>
+    </div>
+    <div class="faq" data-reveal>
+      <details>
+        <summary>¿Necesito React para que funcione?</summary>
+        <p>No — Notepix marca cualquier página. En un build <i>dev</i> de React (Vite, Next.js, CRA;
+           React 18 y 19) cada marca registra además el nombre del componente y el
+           archivo:línea fuente detrás del elemento. En builds de producción y páginas sin
+           React recurre a un selector CSS preciso. La resolución de fuentes para Vue y
+           Svelte está en el roadmap.</p>
+      </details>
+      <details>
+        <summary>¿Con qué agentes de IA funciona?</summary>
+        <p>Con cualquiera donde puedas pegar: Claude Code, Cursor, GitHub Copilot, Windsurf, Codex,
+           Aider, una ventana de chat normal. El brief es texto plano en tu portapapeles — sin
+           cuenta ni configuración. También puedes saltarte el pegado por completo, de dos
+           maneras: con Claude Code conectado mediante Claude in Chrome (eliges el formato de
+           traspaso y lee las marcas de la página), o añadiendo el servidor MCP opcional de
+           Notepix — un comando,
+           <span style="font-family:var(--font-m)">npx -y notepix-mcp setup</span>, lo registra
+           en cada agente de código de tu máquina — para que tu agente extraiga él mismo
+           las marcas y capturas y las vaya tachando a medida que las corrige.</p>
+      </details>
+      <details>
+        <summary>¿Funciona en previews de Lovable, Replit, v0 o Bolt?</summary>
+        <p>Sí — haz clic en el icono de Notepix en la barra de herramientas en cualquier página
+           http(s), previews en la nube incluidas, y márcala. En servidores dev en localhost
+           Notepix se carga solo tras cada recarga; la carga automática con un clic para
+           dominios de preview es la próxima actualización prevista.</p>
+      </details>
+      <details>
+        <summary>¿Dónde viven mis notas?</summary>
+        <p>En el almacenamiento local de extensiones de Chrome, por página y por ruta de SPA.
+           En servidores dev en localhost Notepix se carga solo, así que las notas siguen ahí
+           tras cada recarga. Puedes exportar las marcas de cualquier página como archivo
+           JSON e importarlas donde quieras.</p>
+      </details>
+      <details>
+        <summary>¿Qué envía Notepix por la red?</summary>
+        <p>Nada sale de tu ordenador — hasta que introduces una clave de licencia. Desde
+           entonces hay exactamente un tipo de petición a internet: verificar tu clave contra
+           la API de licencias de Gumroad al activarla y como mucho una vez por semana. Lleva
+           la clave y el id del producto, nunca contenido de páginas, notas ni capturas. Si
+           activas la conexión MCP opcional, esa va a
+           <span style="font-family:var(--font-m)">127.0.0.1</span> — tu propia máquina — y a
+           ningún otro sitio. La política completa está en la
+           <a href="../privacy.html">página de privacidad</a>.</p>
+      </details>
+      <details>
+        <summary>¿Qué pasa cuando termina la prueba?</summary>
+        <p>Crear marcas <i>nuevas</i> pide el desbloqueo único de $6.43. Todo lo que ya hiciste
+           sigue siendo visible, copiable, exportable y borrable para siempre — tus notas son
+           tus datos.</p>
+      </details>
+      <details>
+        <summary>¿El atajo de teclado no hace nada?</summary>
+        <p>Alt+Shift puede chocar con el cambio de distribución de teclado, sobre todo en
+           Windows. Abre
+           <span style="font-family:var(--font-m)">chrome://extensions/shortcuts</span> y reasigna
+           “Toggle the Notepix panel” a lo que quieras — el icono de la barra y el menú
+           contextual funcionan siempre.</p>
+      </details>
+      <details>
+        <summary>¿Solo Chrome?</summary>
+        <p>Chrome 116+ y Edge basado en Chromium (probado). Un listado en Edge Add-ons y
+           otros navegadores están en el roadmap.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <span class="brand"><span class="mark" aria-hidden="true"></span>Notepix</span>
+    <span>Haz clic en tu app, dile a la IA qué arreglar.</span>
+    <div class="foot-links">
+      <a href="../privacy.html">Política de privacidad</a>
+      <a href="#faq">FAQ</a>
+      <a href="https://www.npmjs.com/package/notepix-mcp" rel="noreferrer">notepix-mcp on npm</a>
+      <a href="mailto:jane.nth.uk@gmail.com">Contacto</a>
+      <a data-store href="#install">Añadir a Chrome</a>
+    </div>
+  </div>
+  <div class="wrap">
+    <nav class="langs" aria-label="Idioma">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      <a href="../" lang="en" hreflang="en">English</a>
+      <a href="../vi/" lang="vi" hreflang="vi">Tiếng Việt</a>
+      <a href="../zh/" lang="zh-Hans" hreflang="zh-Hans">简体中文</a>
+      <a href="../ja/" lang="ja" hreflang="ja">日本語</a>
+      <a href="../ko/" lang="ko" hreflang="ko">한국어</a>
+      <span class="cur">Español</span>
+      <a href="../pt/" lang="pt-BR" hreflang="pt-BR">Português</a>
+      <a href="../fr/" lang="fr" hreflang="fr">Français</a>
+      <a href="../de/" lang="de" hreflang="de">Deutsch</a>
+      <a href="../ru/" lang="ru" hreflang="ru">Русский</a>
+    </nav>
+  </div>
+  <div class="wrap" style="padding-top:14px; color:var(--dim-2); font-size:12.5px">
+    © 2026 Notepix · 100% local — tus páginas, notas y capturas nunca salen de tu máquina.
+  </div>
+</footer>
+
+<script src="../assets/site.js" defer></script>
+
+</body>
+</html>

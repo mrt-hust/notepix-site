@@ -1,0 +1,634 @@
+<!doctype html>
+<!-- Notepix landing — Vietnamese. Mirrors /index.html: same structure, translated copy.
+     Keep edits in sync. STORE_URL lives in ../assets/site.js. -->
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Notepix — Click vào app, nói AI cần sửa gì | Tiện ích Chrome cho AI coding agent</title>
+<meta name="description" content="Click vào bất kỳ element nào, viết điều cần đổi — AI coding agent của bạn nhận đúng component, file nguồn và style phía sau. Hoạt động với Claude Code, Cursor, Copilot." />
+<link rel="canonical" href="https://mrt-hust.github.io/notepix-site/vi/" />
+<link rel="alternate" hreflang="x-default" href="https://mrt-hust.github.io/notepix-site/" />
+<link rel="alternate" hreflang="en" href="https://mrt-hust.github.io/notepix-site/" />
+<link rel="alternate" hreflang="vi" href="https://mrt-hust.github.io/notepix-site/vi/" />
+<link rel="alternate" hreflang="zh-Hans" href="https://mrt-hust.github.io/notepix-site/zh/" />
+<link rel="alternate" hreflang="ja" href="https://mrt-hust.github.io/notepix-site/ja/" />
+<link rel="alternate" hreflang="ko" href="https://mrt-hust.github.io/notepix-site/ko/" />
+<link rel="alternate" hreflang="es" href="https://mrt-hust.github.io/notepix-site/es/" />
+<link rel="alternate" hreflang="pt-BR" href="https://mrt-hust.github.io/notepix-site/pt/" />
+<link rel="alternate" hreflang="fr" href="https://mrt-hust.github.io/notepix-site/fr/" />
+<link rel="alternate" hreflang="de" href="https://mrt-hust.github.io/notepix-site/de/" />
+<link rel="alternate" hreflang="ru" href="https://mrt-hust.github.io/notepix-site/ru/" />
+<meta name="theme-color" content="#08080f" />
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
+<link rel="apple-touch-icon" href="../assets/icon-128.png" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="vi_VN" />
+<meta property="og:site_name" content="Notepix" />
+<meta property="og:url" content="https://mrt-hust.github.io/notepix-site/vi/" />
+<meta property="og:title" content="Notepix — click vào app, nói AI cần sửa gì" />
+<meta property="og:description" content="Ghim ghi chú, khung và nét vẽ lên app đang chạy — mỗi mark được truy về đúng component và file nguồn phía sau — rồi giao cả loạt cho AI coding agent như một brief chính xác." />
+<meta property="og:image" content="https://mrt-hust.github.io/notepix-site/assets/og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Một app dashboard với các pin Notepix, một khung và một vòng tròn vẽ tay; panel liệt kê từng mark kèm React component và file nguồn phía sau" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Notepix — click vào app, nói AI cần sửa gì" />
+<meta name="twitter:description" content="Ghim ghi chú lên app đang chạy; AI coding agent nhận đúng component, file và style sau mỗi mark — hoặc tự đọc chúng qua MCP." />
+<meta name="twitter:image" content="https://mrt-hust.github.io/notepix-site/assets/og.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Notepix",
+  "operatingSystem": "Chrome 116+ (Windows, macOS, Linux)",
+  "applicationCategory": "DeveloperApplication",
+  "url": "https://mrt-hust.github.io/notepix-site/vi/",
+  "image": "https://mrt-hust.github.io/notepix-site/assets/og.png",
+  "inLanguage": "vi",
+  "description": "Tiện ích Chrome ghim ghi chú, khung và nét vẽ lên web app đang chạy — mỗi mark được truy về đúng React component, file nguồn và computed style phía sau — rồi giao cả loạt cho AI coding agent như một brief chính xác, hoặc phục vụ trực tiếp qua MCP.",
+  "offers": {
+    "@type": "Offer",
+    "price": "6.43",
+    "priceCurrency": "USD",
+    "description": "Mở khóa một lần sau 7 ngày dùng thử đầy đủ tính năng. Không subscription."
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Notepix",
+  "inLanguage": "vi",
+  "url": "https://mrt-hust.github.io/notepix-site/vi/"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "vi",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Có cần React thì mới dùng được không?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Không — Notepix đánh dấu được mọi trang. Trên bản dev React (Vite, Next.js, CRA; React 18 và 19), mỗi mark còn ghi thêm tên component và file:dòng nguồn phía sau element. Trên bản production và trang không dùng React, nó tự chuyển về một CSS selector chính xác. Truy nguồn cho Vue và Svelte đang nằm trong lộ trình." }
+    },
+    {
+      "@type": "Question",
+      "name": "Hoạt động với những AI agent nào?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Bất cứ nơi nào bạn dán được: Claude Code, Cursor, GitHub Copilot, Windsurf, Codex, Aider, hay một cửa sổ chat thường. Brief là văn bản thuần trên clipboard — không cần tài khoản hay cài đặt gì. Bạn cũng có thể bỏ hẳn bước dán: dùng Claude Code kết nối qua Claude in Chrome, hoặc thêm Notepix MCP server tùy chọn (npx -y notepix-mcp setup) để agent tự kéo mark và ảnh chụp về, sửa đến đâu tích xong đến đó." }
+    },
+    {
+      "@type": "Question",
+      "name": "Có chạy trên preview của Lovable, Replit, v0 hay Bolt không?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Có — bấm icon Notepix trên thanh công cụ ở bất kỳ trang http(s) nào, kể cả preview trên cloud, rồi đánh dấu thoải mái. Trên dev server localhost, Notepix tự nạp sau mỗi lần reload; tự nạp một chạm cho các domain preview là bản cập nhật kế tiếp." }
+    },
+    {
+      "@type": "Question",
+      "name": "Ghi chú của tôi nằm ở đâu?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Trong bộ nhớ cục bộ của tiện ích trên Chrome, tách theo từng trang và từng route SPA. Trên dev server localhost, Notepix tự nạp nên ghi chú vẫn còn nguyên sau mỗi lần reload. Bạn có thể xuất mark của bất kỳ trang nào ra file JSON và nhập lại ở bất cứ đâu." }
+    },
+    {
+      "@type": "Question",
+      "name": "Notepix gửi gì qua mạng?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Không gì rời khỏi máy bạn — cho đến khi bạn nhập license key. Từ đó trở đi chỉ có đúng một loại request: xác thực key với API license của Gumroad lúc kích hoạt và tối đa mỗi tuần một lần. Request chỉ mang key và id sản phẩm, không bao giờ kèm nội dung trang, ghi chú hay ảnh chụp. Nếu bật kết nối MCP tùy chọn, kết nối đó chỉ chạy tới 127.0.0.1 — chính máy của bạn — và không đi đâu khác." }
+    },
+    {
+      "@type": "Question",
+      "name": "Hết hạn dùng thử thì sao?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Tạo mark mới sẽ hỏi mở khóa một lần $6.43. Mọi thứ bạn đã tạo vẫn xem, sao chép, xuất và xóa được mãi mãi — ghi chú là dữ liệu của bạn." }
+    },
+    {
+      "@type": "Question",
+      "name": "Phím tắt không phản ứng gì?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Alt+Shift có thể đụng với phím chuyển bộ gõ, nhất là trên Windows. Mở chrome://extensions/shortcuts và gán lại \"Toggle the Notepix panel\" thành tổ hợp bạn thích — icon trên thanh công cụ và menu chuột phải thì lúc nào cũng hoạt động." }
+    },
+    {
+      "@type": "Question",
+      "name": "Chỉ chạy trên Chrome?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Chrome 116+ và Edge nhân Chromium (đã kiểm thử). Bản đăng trên Edge Add-ons và các trình duyệt khác đang nằm trong lộ trình." }
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="../assets/site.css" />
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+
+<div class="navwrap">
+  <nav>
+    <a class="brand" href="#top"><span class="mark" aria-hidden="true"></span>Notepix</a>
+    <div class="nav-links">
+      <a href="#how">Cách hoạt động</a>
+      <a href="#features">Tính năng</a>
+      <a href="#privacy">Quyền riêng tư</a>
+      <a href="#install">Giá</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a class="btn primary" data-store href="#install">Thêm vào Chrome</a>
+  </nav>
+</div>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+    <div class="hero-copy">
+    <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Tiện ích Chrome · cho AI builder</p>
+    <h1>
+      Click <span class="hl">app của bạn<span class="tag" aria-hidden="true">&lt;main&gt; in App — src/App.jsx:12</span></span>,<br />
+      <span class="ink">nói AI cần sửa gì.<svg viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden="true"><path d="M4 8 C 60 2, 118 11, 172 6 S 262 3, 296 7" /></svg></span>
+    </h1>
+    <p class="lede">
+      Ghim ghi chú lên app đang chạy — AI coding agent của bạn nhận đúng
+      component, file nguồn và style sau mỗi mark.
+    </p>
+    <div class="cta-row">
+      <a class="btn primary big" data-store href="#install">Thêm vào Chrome — 7 ngày miễn phí</a>
+      <a class="btn big" href="#how">Xem cách hoạt động</a>
+    </div>
+    <p class="fineprint">Chrome 116+ · chạy trên Edge · $6.43 một lần, không subscription</p>
+    </div>
+
+    <div class="hero-art">
+      <div class="scene" role="img"
+           aria-label="Một web app cách điệu với các mark Notepix: một thẻ số liệu được chọn và gắn nhãn div in StatCard — src/components/StatCard.jsx:15 với pin 1, một vòng tròn đỏ vẽ tay khoanh một cột biểu đồ với pin 2, và panel Notepix nổi liệt kê cả hai mark kèm file nguồn cùng nút Copy for AI">
+        <div class="app" aria-hidden="true">
+          <div class="app-top">
+            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+            <span class="app-url">localhost:3000</span>
+          </div>
+          <div class="app-body">
+            <div class="app-side">
+              <span class="s-logo"></span>
+              <span class="s-line on" style="width:78%"></span>
+              <span class="s-line" style="width:58%"></span>
+              <span class="s-line" style="width:70%"></span>
+              <span class="s-line" style="width:46%"></span>
+              <span class="s-line" style="width:64%"></span>
+            </div>
+            <div class="main">
+              <div class="m-head">
+                <div>
+                  <div class="m-hi">Good morning, Alex</div>
+                  <div class="m-sub">Here’s what happened across your workspace this week.</div>
+                </div>
+                <span class="m-avatar">AL</span>
+              </div>
+              <div class="stats">
+                <div class="stat">
+                  <span class="st-label">REVENUE</span>
+                  <span class="st-val">$12,480</span>
+                  <span class="st-delta up">▲ +8.2%</span>
+                </div>
+                <div class="stat picked">
+                  <span class="tag2">&lt;div&gt; in StatCard — StatCard.jsx:15</span>
+                  <span class="pin p1">1</span>
+                  <span class="st-label">ACTIVE USERS</span>
+                  <span class="st-val">1,284</span>
+                  <span class="st-delta up">▲ +3.1%</span>
+                  <svg class="cursor" viewBox="0 0 24 24"><path d="M5 2.5 18.5 12l-6.3 1.3 3.4 6.2-3 1.6-3.4-6.3L5 18.8Z" fill="#fff" stroke="#111" stroke-width="1.3" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="stat">
+                  <span class="st-label">CHURN</span>
+                  <span class="st-val">2.4%</span>
+                  <span class="st-delta down">▼ −0.4%</span>
+                </div>
+              </div>
+              <div class="chart">
+                <div class="ch-head"><b>Revenue</b><span>last 12 weeks</span></div>
+                <div class="bars">
+                  <i style="--h:36%"></i><i style="--h:52%"></i><i style="--h:44%"></i>
+                  <i style="--h:58%"></i>
+                  <i class="hot" style="--h:96%">
+                    <svg class="scribble" viewBox="0 0 60 150" aria-hidden="true"><path d="M30 10 C 48 6, 57 34, 54 76 C 51 116, 38 142, 22 138 C 8 134, 3 100, 6 62 C 9 28, 16 12, 32 12 C 40 12, 45 18, 46 26" /></svg>
+                    <span class="pin p2">2</span>
+                  </i>
+                  <i style="--h:64%"></i><i style="--h:56%"></i><i style="--h:48%"></i>
+                  <i style="--h:50%"></i><i style="--h:62%"></i><i style="--h:54%"></i>
+                  <i style="--h:70%"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <aside class="panel" aria-hidden="true">
+          <div class="pn-head"><span class="pn-logo"></span>NOTEPIX<span class="pn-plug">● MCP</span></div>
+          <div class="pn-tools"><b class="on">Note</b><b>Frame</b><b>Draw</b><b>Shot</b></div>
+          <div class="pn-card">
+            <div class="pn-meta"><span class="pn-id">#1</span><span class="pn-kind">NOTE</span></div>
+            <div class="pn-src">&lt;div&gt; in StatCard — src/components/StatCard.jsx:15</div>
+            <div class="pn-note">Equal gaps between these cards</div>
+          </div>
+          <div class="pn-card">
+            <div class="pn-meta"><span class="pn-id">#2</span><span class="pn-kind">DRAW</span></div>
+            <div class="pn-src">&lt;svg&gt; in RevenueChart — src/components/Chart.jsx:42</div>
+            <div class="pn-note">Cap the y-axis at $2k</div>
+          </div>
+          <div class="pn-foot"><span class="pn-ghost">Markdown</span><span class="pn-cta">Copy for AI</span></div>
+        </aside>
+      </div>
+    </div>
+    </div>
+
+    <div class="agents" data-reveal>
+      Hoạt động với
+      <span>Claude Code</span><span>Cursor</span><span>GitHub Copilot</span>
+      <span>Windsurf</span><span>Codex</span>
+      — dán vào đâu cũng được.
+    </div>
+  </div>
+</header>
+
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <p class="eyebrow">Cách hoạt động</p>
+      <h2>Ba cú click, từ ngứa mắt ra diff.</h2>
+    </div>
+    <div class="steps">
+      <div class="step" style="--i:0" data-reveal>
+        <div class="n">1</div>
+        <h3>Gọi panel lên</h3>
+        <p>Nhấn <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd> (Mac: <kbd>⌥⇧A</kbd>)
+           trên app đang chạy, hoặc bấm icon trên thanh công cụ. Tự nạp trên localhost.</p>
+      </div>
+      <div class="step" style="--i:1" data-reveal>
+        <div class="n">2</div>
+        <h3>Đánh dấu chỗ ngứa mắt</h3>
+        <p>Ghim <b>Note</b> vào bất kỳ element nào, kéo <b>Frame</b> quanh một vùng, hoặc
+           phác bằng <b>Pen</b>. Viết điều cần đổi bằng lời thường.</p>
+        <div class="quote">“Nút này to lên và đổi xanh lá, giống nút trên header”</div>
+      </div>
+      <div class="step" style="--i:2" data-reveal>
+        <div class="n">3</div>
+        <h3>Copy for AI → dán</h3>
+        <p>Một cú click gói mọi mark kèm đúng element phía sau.
+           Dán vào chat của agent và xem các bản sửa đáp xuống.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <p class="eyebrow">Các mark</p>
+      <h2>Bốn cách chỉ. Một brief chính xác.</h2>
+    </div>
+
+    <div class="feats">
+      <div class="feat" data-reveal>
+        <div class="txt">
+          <div class="mark-meta">
+            <span class="pin">1</span><span class="pill">NOTE</span>
+            <span class="msrc">click bất kỳ element · nói điều cần đổi</span>
+          </div>
+          <h3>Chỉ đúng chỗ. Nói điều bạn muốn.</h3>
+          <p>Chọn <b>Note</b> rồi click — một pin đánh số đậu lên element, bạn gõ
+             điều cần đổi. Kéo <b>Frame</b> quanh một vùng, hoặc vẽ nguệch ngoạc bằng <b>Pen</b>.</p>
+          <p class="side">Đính ảnh chụp sạch cho từng mark, và thả
+             <span style="font-family:var(--font-m)">@references</span> tới element khác —
+             “cho cái này giống @Heading”.</p>
+        </div>
+        <figure class="browser">
+          <div class="bar" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">localhost:3000/demo.html</span></div>
+          <img src="../assets/01-hero.png" width="1280" height="800" loading="lazy"
+               alt="Panel Notepix liệt kê hai mark với chỉ dẫn viết bằng lời thường: dịu bớt nút upgrade, cân đều khoảng cách giữa các thẻ số liệu" />
+        </figure>
+      </div>
+
+      <div class="feat flip" data-reveal>
+        <div class="txt">
+          <div class="mark-meta">
+            <span class="pin">2</span><span class="pill">SOURCE</span>
+            <span class="msrc">src/demo/components/UpgradeButton.jsx:6:25</span>
+          </div>
+          <h3>Mỗi mark biết rõ code phía sau.</h3>
+          <p>Không phải <span style="font-family:var(--font-m)">div.css-1q2w3e</span> —
+             mà là <span style="font-family:var(--font-m)">&lt;button&gt; in UpgradeButton —
+             src/components/UpgradeButton.jsx:6</span>. React 18/19, Vite, Next.js, CRA.
+             Agent của bạn mở đúng file thay vì phải grep.</p>
+          <p class="side">Mỗi mark còn chụp lại computed style và danh sách class của element.
+             Trang không dùng React? Tự chuyển về một CSS selector chính xác.</p>
+        </div>
+        <figure class="browser">
+          <div class="bar" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">localhost:3000/demo.html</span></div>
+          <img src="../assets/02-source.png" width="1280" height="800" loading="lazy"
+               alt="Đang viết ghi chú trong editor nổi với vòng tròn đỏ vẽ tay trên biểu đồ; chú thích ghi: mỗi mark biết rõ React component và file phía sau" />
+        </figure>
+      </div>
+
+      <div class="feat" data-reveal>
+        <div class="txt">
+          <div class="mark-meta">
+            <span class="pin">3</span><span class="pill">MEASURE</span>
+            <span class="msrc">font 14px · pad 18 20 · gap ←18 →18</span>
+          </div>
+          <h3>Dẫn pixel thật, không cảm tính.</h3>
+          <p>Rê chuột là hiện bảng đo chuẩn DevTools: padding, margin, và
+             <b>khoảng cách đo được</b> tới từng element bên cạnh — pixel render thật.</p>
+          <p class="side">Nên ghi chú có thể viết “giữa hai cái này 24px — đưa về 8”
+             mà không cần mở DevTools.</p>
+        </div>
+        <figure class="browser">
+          <div class="bar" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">localhost:3000/demo.html</span></div>
+          <img src="../assets/03-measure.png" width="1280" height="800" loading="lazy"
+               alt="Rê chuột lên thẻ số liệu hiện nhãn component, viền padding và khoảng cách 18 pixel đo được tới các thẻ bên cạnh, kèm chip ghi font 14px, pad 18 20, gap 18" />
+        </figure>
+      </div>
+
+      <div class="feat flip" data-reveal>
+        <div class="txt">
+          <div class="mark-meta">
+            <span class="pin">4</span><span class="pill">BRIEF</span>
+            <span class="msrc">markdown · plain text · JSON · Claude in Chrome · MCP</span>
+          </div>
+          <h3>Một click. Một brief agent nào cũng làm được.</h3>
+          <p><b>Copy for AI</b> gói mọi mark đang mở — element, nguồn, style,
+             chỉ dẫn — vào một lần dán. Năm định dạng, gồm cả prompt bàn giao
+             cho Claude Code qua Claude in Chrome.</p>
+          <p class="side">Ảnh chụp xuất ra đều đóng dấu badge
+             <span style="font-family:var(--font-m)">#id</span> của mark — ảnh và
+             chỉ dẫn không thể lạc nhau.</p>
+        </div>
+        <div class="term" role="img" aria-label="Brief markdown mà Notepix sao chép vào clipboard">
+          <div class="thead"><span class="dot"></span><span class="dot"></span><span class="dot"></span>clipboard · brief markdown</div>
+          <pre><span class="h"># UI annotations</span>
+<span class="k">Page:</span> http://localhost:3000/demo.html
+
+<span class="h">## #1 — note</span>
+<span class="k">- jsx:</span> <span class="c">`&lt;button&gt; in UpgradeButton`</span>
+       <span class="c">@ src/components/UpgradeButton.jsx:6</span>
+<span class="k">- style:</span> 14px 800 · #fff on #f7a11b→#ef6820 · pad 11 22
+<span class="k">- instruction:</span> <span class="i">Tone it down — ghost style</span>
+
+<span class="h">## #2 — frame</span>
+<span class="k">- jsx:</span> <span class="c">`&lt;div&gt; in StatCard`</span>
+       <span class="c">@ src/components/StatCard.jsx:15</span>
+<span class="k">- area:</span> x=64 y=170 w=1152 h=124
+<span class="k">- instruction:</span> <span class="i">Equal gaps between these cards</span></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="loop">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <p class="eyebrow">Vòng lặp</p>
+      <h2>Ghim. Agent sửa. Thẻ tự tích xong.</h2>
+    </div>
+    <div class="feats">
+      <div class="feat" data-reveal>
+        <div class="txt">
+          <div class="mark-meta">
+            <span class="pin">✓</span><span class="pill">LIVE</span>
+            <span class="msrc">npx -y notepix-mcp setup · icon phích cắm → xanh</span>
+          </div>
+          <h3>Bỏ qua clipboard: agent tự đọc mark.</h3>
+          <p>Một lệnh đăng ký Notepix server cục bộ với mọi coding agent trên
+             máy bạn. Agent kéo từng mark thẳng từ trình duyệt và lật thẻ
+             sang <b>DONE</b> ngay trước mắt bạn khi sửa xong.</p>
+          <p class="side">Bảo <i>“tôi ghim mark nào sửa mark đó”</i> rồi cứ click tiếp quanh
+             app trong lúc diff đáp xuống. Tất cả trên
+             <span style="font-family:var(--font-m)">127.0.0.1</span>.</p>
+        </div>
+        <figure class="browser">
+          <div class="bar" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">localhost:3000/demo.html</span></div>
+          <img src="../assets/06-agent.png" width="1280" height="800" loading="lazy"
+               alt="Panel Notepix với icon phích cắm xanh và mark số một lật sang DONE, chữ gạch ngang — được AI agent kết nối qua MCP tích xong trực tiếp" />
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="box">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <p class="eyebrow">Chi tiết</p>
+      <h2>Còn có sẵn trong hộp.</h2>
+    </div>
+    <div class="more">
+      <div class="item" style="--i:0" data-reveal>
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></div>
+        <b>Ưu tiên bàn phím</b>
+        <p><kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>N</kbd> ghim ghi chú không cần mở
+           panel. Bên trong, <kbd>N</kbd> <kbd>F</kbd> <kbd>D</kbd> <kbd>S</kbd> chuyển chế độ.</p>
+      </div>
+      <div class="item" style="--i:1" data-reveal>
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2Z"/><circle cx="12" cy="13" r="4"/></svg></div>
+        <b>Ảnh chụp cắt gọn</b>
+        <p>Nút 📷 cắt đúng component đó — pin của chính Notepix được gỡ ra trước.</p>
+      </div>
+      <div class="item" style="--i:2" data-reveal>
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <b>Hiểu SPA, theo từng trang</b>
+        <p>Mỗi route giữ mark riêng; panel bám theo điều hướng phía client của bạn.</p>
+      </div>
+      <div class="item" style="--i:0" data-reveal>
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg></div>
+        <b>Xuất / nhập</b>
+        <p>JSON ra, JSON vào — gộp mark của đồng đội hoặc chuyển máy.</p>
+      </div>
+      <div class="item" style="--i:1" data-reveal>
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8Z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <b>Trang sạch mặc định</b>
+        <p>Pin chỉ vẽ khi bạn đang đánh dấu. Ẩn panel là app lại chỉn chu như thường.</p>
+      </div>
+      <div class="item" style="--i:2" data-reveal>
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>
+        <b>Ảnh tự gắn với mark</b>
+        <p>Mỗi ảnh chụp được đóng dấu #id của mark — agent khớp ảnh với chỉ dẫn
+           theo badge, không theo thứ tự dán.</p>
+      </div>
+      <div class="item" style="--i:0" data-reveal>
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg></div>
+        <b>Vòng lặp, không phải một phát</b>
+        <p>Tích ✓ xong một mark — nó ở lại để tham chiếu nhưng rời khỏi lần copy sau.
+           Mỗi lần xóa đều có Undo.</p>
+      </div>
+      <div class="item" style="--i:1" data-reveal>
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg></div>
+        <b>Không vướng tay bạn</b>
+        <p>Ghost mode làm mờ panel đến khi bạn rê chuột vào. Kéo đi đâu tùy ý, co giãn từ mọi cạnh.</p>
+      </div>
+      <div class="item" style="--i:2" data-reveal>
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></div>
+        <b>Cần trợ giúp, bấm ?</b>
+        <p>Nút ? mở lại hướng dẫn 30 giây. Gán lại phím tắt tại
+           <span style="font-family:var(--font-m)">chrome://extensions/shortcuts</span>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="privacy">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <p class="eyebrow">Riêng tư từ thiết kế</p>
+      <h2>App của bạn không bao giờ rời máy.</h2>
+    </div>
+    <div class="priv" data-reveal>
+      <div class="tile">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+        <h3>Không server, không tài khoản</h3>
+        <p>Không backend. Ghi chú, ảnh chụp và đường dẫn nguồn nằm trong bộ nhớ
+           cục bộ của Chrome trên máy bạn — không ở đâu khác.</p>
+      </div>
+      <div class="tile">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 2l20 20"/><path d="M6.71 6.71C4.24 8.16 2.5 10.5 1 12c1.5 1.5 4.5 8 11 8 1.86 0 3.47-.53 4.84-1.32"/><path d="M10.5 5.2A10.7 10.7 0 0 1 12 5c6.5 0 9.5 6.5 11 7-1 1-2.06 2.55-3.6 3.9"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>
+        <h3>Không theo dõi</h3>
+        <p>Không analytics, không telemetry, không báo cáo crash. Bạn đánh dấu gì
+           là việc của bạn.</p>
+      </div>
+      <div class="tile">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <h3>Một loại request mạng, duy nhất</h3>
+        <p>Không request nào cho đến khi bạn nhập license key — rồi chỉ đúng một loại:
+           xác thực key với Gumroad. Không bao giờ là trang hay ghi chú của bạn.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="install">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <p class="eyebrow">Giá</p>
+      <h2>Miễn phí 7 ngày. Rồi $6.43. Một lần.</h2>
+    </div>
+    <div class="card" data-reveal>
+      <div class="buy">
+        <div class="price">$6.43 <small>một lần · của bạn mãi mãi</small></div>
+        <a class="btn primary big" data-store data-store-main hidden href="#">Thêm vào Chrome — 7 ngày miễn phí</a>
+        <p class="soon" data-soon><span class="sdot" aria-hidden="true"></span>Đang chờ duyệt trên Chrome Web Store — nút cài đặt sẽ mở cùng listing.</p>
+        <p class="paynote">Thanh toán qua Gumroad · license key gửi qua email · mở khóa trong panel</p>
+      </div>
+      <ul class="plist">
+        <li><span class="ck"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg></span>
+            <span><b>Dùng thử 7 ngày, đủ tính năng</b> — không tài khoản, không thẻ, không phải đăng ký gì.</span></li>
+        <li><span class="ck"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg></span>
+            <span><b>Trả một lần, mở khóa mãi mãi</b> — không subscription, không tính theo ghế.</span></li>
+        <li><span class="ck"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg></span>
+            <span><b>Ghi chú không bao giờ bị khóa</b> — xem, sao chép và xuất mark đã có
+            vẫn chạy sau dùng thử, trả phí hay không.</span></li>
+        <li><span class="ck"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg></span>
+            <span><b>Theo bạn sang máy mới</b> — cùng một license key mở khóa Notepix trên máy khác.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <p class="eyebrow">FAQ</p>
+      <h2>Hỏi nhanh, đáp gọn.</h2>
+    </div>
+    <div class="faq" data-reveal>
+      <details>
+        <summary>Có cần React thì mới dùng được không?</summary>
+        <p>Không — Notepix đánh dấu được mọi trang. Trên bản <i>dev</i> React (Vite, Next.js, CRA;
+           React 18 và 19), mỗi mark còn ghi thêm tên component và file:dòng nguồn
+           phía sau element. Trên bản production và trang không dùng React, nó tự chuyển
+           về một CSS selector chính xác. Truy nguồn cho Vue và Svelte đang nằm trong lộ trình.</p>
+      </details>
+      <details>
+        <summary>Hoạt động với những AI agent nào?</summary>
+        <p>Bất cứ nơi nào bạn dán được: Claude Code, Cursor, GitHub Copilot, Windsurf, Codex,
+           Aider, hay một cửa sổ chat thường. Brief là văn bản thuần trên clipboard — không cần
+           tài khoản hay cài đặt gì. Bạn cũng có thể bỏ hẳn bước dán, theo hai cách: dùng Claude Code
+           kết nối qua Claude in Chrome (chọn định dạng bàn giao là nó tự đọc mark
+           trên trang), hoặc thêm Notepix MCP server tùy chọn — một lệnh,
+           <span style="font-family:var(--font-m)">npx -y notepix-mcp setup</span>, đăng ký nó
+           với mọi coding agent trên máy bạn — để agent tự kéo
+           mark và ảnh chụp về, sửa đến đâu tích xong đến đó.</p>
+      </details>
+      <details>
+        <summary>Có chạy trên preview của Lovable, Replit, v0 hay Bolt không?</summary>
+        <p>Có — bấm icon Notepix trên thanh công cụ ở bất kỳ trang http(s) nào, kể cả
+           preview trên cloud, rồi đánh dấu thoải mái. Trên dev server localhost, Notepix
+           tự nạp sau mỗi lần reload; tự nạp một chạm cho các domain preview là bản
+           cập nhật kế tiếp.</p>
+      </details>
+      <details>
+        <summary>Ghi chú của tôi nằm ở đâu?</summary>
+        <p>Trong bộ nhớ cục bộ của tiện ích trên Chrome, tách theo từng trang và từng route SPA. Trên
+           dev server localhost, Notepix tự nạp nên ghi chú vẫn còn nguyên sau mỗi lần
+           reload. Bạn có thể xuất mark của bất kỳ trang nào ra file JSON và nhập lại ở bất cứ đâu.</p>
+      </details>
+      <details>
+        <summary>Notepix gửi gì qua mạng?</summary>
+        <p>Không gì rời khỏi máy bạn — cho đến khi bạn nhập license key. Từ đó trở đi chỉ có
+           đúng một loại request: xác thực key với API license của Gumroad lúc kích hoạt
+           và tối đa mỗi tuần một lần. Request chỉ mang key và id sản phẩm, không bao giờ kèm
+           nội dung trang, ghi chú hay ảnh chụp. Nếu bật kết nối MCP tùy chọn, kết nối đó
+           chỉ chạy tới <span style="font-family:var(--font-m)">127.0.0.1</span> — chính máy
+           của bạn — và không đi đâu khác. Chính sách đầy đủ nằm ở
+           <a href="../privacy.html">trang quyền riêng tư</a>.</p>
+      </details>
+      <details>
+        <summary>Hết hạn dùng thử thì sao?</summary>
+        <p>Tạo mark <i>mới</i> sẽ hỏi mở khóa một lần $6.43. Mọi thứ bạn đã tạo vẫn xem,
+           sao chép, xuất và xóa được mãi mãi — ghi chú là dữ liệu của bạn.</p>
+      </details>
+      <details>
+        <summary>Phím tắt không phản ứng gì?</summary>
+        <p>Alt+Shift có thể đụng với phím chuyển bộ gõ, nhất là trên Windows. Mở
+           <span style="font-family:var(--font-m)">chrome://extensions/shortcuts</span> và gán lại
+           “Toggle the Notepix panel” thành tổ hợp bạn thích — icon trên thanh công cụ và
+           menu chuột phải thì lúc nào cũng hoạt động.</p>
+      </details>
+      <details>
+        <summary>Chỉ chạy trên Chrome?</summary>
+        <p>Chrome 116+ và Edge nhân Chromium (đã kiểm thử). Bản đăng trên Edge Add-ons và
+           các trình duyệt khác đang nằm trong lộ trình.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <span class="brand"><span class="mark" aria-hidden="true"></span>Notepix</span>
+    <span>Click vào app, nói AI cần sửa gì.</span>
+    <div class="foot-links">
+      <a href="../privacy.html">Chính sách quyền riêng tư</a>
+      <a href="#faq">FAQ</a>
+      <a href="https://www.npmjs.com/package/notepix-mcp" rel="noreferrer">notepix-mcp on npm</a>
+      <a href="mailto:jane.nth.uk@gmail.com">Liên hệ</a>
+      <a data-store href="#install">Thêm vào Chrome</a>
+    </div>
+  </div>
+  <div class="wrap">
+    <nav class="langs" aria-label="Ngôn ngữ">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      <a href="../" lang="en" hreflang="en">English</a>
+      <span class="cur">Tiếng Việt</span>
+      <a href="../zh/" lang="zh-Hans" hreflang="zh-Hans">简体中文</a>
+      <a href="../ja/" lang="ja" hreflang="ja">日本語</a>
+      <a href="../ko/" lang="ko" hreflang="ko">한국어</a>
+      <a href="../es/" lang="es" hreflang="es">Español</a>
+      <a href="../pt/" lang="pt-BR" hreflang="pt-BR">Português</a>
+      <a href="../fr/" lang="fr" hreflang="fr">Français</a>
+      <a href="../de/" lang="de" hreflang="de">Deutsch</a>
+      <a href="../ru/" lang="ru" hreflang="ru">Русский</a>
+    </nav>
+  </div>
+  <div class="wrap" style="padding-top:14px; color:var(--dim-2); font-size:12.5px">
+    © 2026 Notepix · 100% cục bộ — trang, ghi chú và ảnh chụp của bạn không bao giờ rời máy.
+  </div>
+</footer>
+
+<script src="../assets/site.js" defer></script>
+
+</body>
+</html>
